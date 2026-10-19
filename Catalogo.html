@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Moderno</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-neutral-50 text-neutral-900 antialiased selection:bg-black selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-neutral-200">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold tracking-tight">STUDIO<span class="text-neutral-400">.</span></a>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-600">
+                <a href="#productos" class="hover:text-black transition-colors">Colección</a>
+                <a href="#destacados" class="hover:text-black transition-colors">Destacados</a>
+                <a href="#contacto" class="hover:text-black transition-colors">Contacto</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <button class="bg-black text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-neutral-800 transition-all shadow-sm">
+                    Ver Carrito (0)
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="max-w-7xl mx-auto px-6 py-20 md:py-32 flex flex-col items-center text-center">
+        <span class="inline-block bg-neutral-200/80 text-neutral-800 text-xs font-semibold px-3.5 py-1.5 rounded-full uppercase tracking-wider mb-6">
+            Nueva Colección 2026
+        </span>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight max-w-4xl text-neutral-900 leading-[1.1]">
+            Diseño minimalista para espacios contemporáneos.
+        </h1>
+        <p class="mt-6 text-lg md:text-xl text-neutral-600 max-w-2xl font-light">
+            Explora nuestra selección exclusiva curada para elevar tu estilo de vida con elegancia y funcionalidad.
+        </p>
+        <div class="mt-10 flex flex-col sm:flex-row gap-4">
+            <a href="#productos" class="bg-black text-white font-medium px-8 py-4 rounded-full hover:bg-neutral-800 transition-all shadow-lg shadow-black/10">
+                Explorar Catálogo
+            </a>
+            <a href="#contacto" class="bg-white border border-neutral-300 font-medium px-8 py-4 rounded-full hover:bg-neutral-100 transition-all">
+                Saber más
+            </a>
+        </div>
+    </section>
+
+    <!-- Catálogo de Productos -->
+    <section id="productos" class="max-w-7xl mx-auto px-6 py-16">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <div>
+                <h2 class="text-3xl font-bold tracking-tight">Catálogo Exclusivo</h2>
+                <p class="text-neutral-500 mt-1">Piezas diseñadas con precisión y materiales sustentables.</p>
+            </div>
+            <!-- Filtros rápidos -->
+            <div class="flex items-center gap-2 mt-4 md:mt-0 overflow-x-auto pb-2">
+                <button class="bg-black text-white text-sm px-4 py-2 rounded-full font-medium">Todos</button>
+                <button class="bg-white border border-neutral-200 text-neutral-600 hover:border-black hover:text-black text-sm px-4 py-2 rounded-full font-medium transition-all">Mobiliario</button>
+                <button class="bg-white border border-neutral-200 text-neutral-600 hover:border-black hover:text-black text-sm px-4 py-2 rounded-full font-medium transition-all">Iluminación</button>
+                <button class="bg-white border border-neutral-200 text-neutral-600 hover:border-black hover:text-black text-sm px-4 py-2 rounded-full font-medium transition-all">Accesorios</button>
+            </div>
+        </div>
+
+        <!-- Grid de Productos -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Producto 1 -->
+            <div class="group flex flex-col">
+                <div class="relative bg-neutral-100 rounded-2xl overflow-hidden aspect-square mb-4">
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=800" alt="Sillón Nórdico" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-neutral-900 text-xs font-semibold px-3 py-1 rounded-full">Nuevo</span>
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="font-semibold text-lg text-neutral-900 group-hover:underline">Sillón Minimalista Nord</h3>
+                        <p class="text-neutral-500 text-sm">Mobiliario</p>
+                    </div>
+                    <span class="font-bold text-lg">$450.00</span>
+                </div>
+                <button class="mt-4 w-full bg-neutral-900 text-white font-medium py-2.5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Agregar al Carrito
+                </button>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="group flex flex-col">
+                <div class="relative bg-neutral-100 rounded-2xl overflow-hidden aspect-square mb-4">
+                    <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&q=80&w=800" alt="Lámpara de Escritorio" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="font-semibold text-lg text-neutral-900 group-hover:underline">Lámpara Aura Brass</h3>
+                        <p class="text-neutral-500 text-sm">Iluminación</p>
+                    </div>
+                    <span class="font-bold text-lg">$120.00</span>
+                </div>
+                <button class="mt-4 w-full bg-neutral-900 text-white font-medium py-2.5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Agregar al Carrito
+                </button>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="group flex flex-col">
+                <div class="relative bg-neutral-100 rounded-2xl overflow-hidden aspect-square mb-4">
+                    <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&q=80&w=800" alt="Mesa de Centro" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute top-4 left-4 bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full">-15%</span>
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="font-semibold text-lg text-neutral-900 group-hover:underline">Mesa Circular Stone</h3>
+                        <p class="text-neutral-500 text-sm">Mobiliario</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="font-bold text-lg">$280.00</span>
+                        <span class="block text-xs text-neutral-400 line-through">$330.00</span>
+                    </div>
+                </div>
+                <button class="mt-4 w-full bg-neutral-900 text-white font-medium py-2.5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Agregar al Carrito
+                </button>
+            </div>
+
+            <!-- Producto 4 -->
+            <div class="group flex flex-col">
+                <div class="relative bg-neutral-100 rounded-2xl overflow-hidden aspect-square mb-4">
+                    <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&q=80&w=800" alt="Silla de Comedor" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="font-semibold text-lg text-neutral-900 group-hover:underline">Silla Ergónomica Echo</h3>
+                        <p class="text-neutral-500 text-sm">Mobiliario</p>
+                    </div>
+                    <span class="font-bold text-lg">$190.00</span>
+                </div>
+                <button class="mt-4 w-full bg-neutral-900 text-white font-medium py-2.5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Agregar al Carrito
+                </button>
+            </div>
+
+            <!-- Producto 5 -->
+            <div class="group flex flex-col">
+                <div class="relative bg-neutral-100 rounded-2xl overflow-hidden aspect-square mb-4">
+                    <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=800" alt="Sofá Modular" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="font-semibold text-lg text-neutral-900 group-hover:underline">Sofá Modular Horizon</h3>
+                        <p class="text-neutral-500 text-sm">Mobiliario</p>
+                    </div>
+                    <span class="font-bold text-lg">$890.00</span>
+                </div>
+                <button class="mt-4 w-full bg-neutral-900 text-white font-medium py-2.5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Agregar al Carrito
+                </button>
+            </div>
+
+            <!-- Producto 6 -->
+            <div class="group flex flex-col">
+                <div class="relative bg-neutral-100 rounded-2xl overflow-hidden aspect-square mb-4">
+                    <img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&q=80&w=800" alt="Jarrón de Cerámica" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-neutral-900 text-xs font-semibold px-3 py-1 rounded-full">Exclusivo</span>
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="font-semibold text-lg text-neutral-900 group-hover:underline">Jarrón de Cerámica Clay</h3>
+                        <p class="text-neutral-500 text-sm">Accesorios</p>
+                    </div>
+                    <span class="font-bold text-lg">$65.00</span>
+                </div>
+                <button class="mt-4 w-full bg-neutral-900 text-white font-medium py-2.5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Agregar al Carrito
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto" class="bg-white border-t border-neutral-200 mt-20">
+        <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
+            <p class="text-sm text-neutral-500">&copy; 2026 STUDIO. Todos los derechos reservados.</p>
+            <div class="flex gap-6 text-sm text-neutral-600">
+                <a href="#" class="hover:text-black transition-colors">Instagram</a>
+                <a href="#" class="hover:text-black transition-colors">Twitter</a>
+                <a href="#" class="hover:text-black transition-colors">Privacidad</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
