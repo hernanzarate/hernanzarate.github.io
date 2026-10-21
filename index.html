@@ -1,21 +1,28 @@
 <!DOCTYPE html>
-<!-- saved from url=(0060)file:///C:/Users/hzarate/Downloads/new%20catalogo/index.html -->
+<!-- saved from url=(0059)file:///C:/Users/hzarate/Downloads/Ulti_Catalogo/index.html -->
 <html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Mobiliario de Oficina</title>
-    
+    <title>Santa Margarita S.A. | Catálogo de Mobiliario</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link href="./img/css2" rel="stylesheet">
+
     <style>
         :root {
-            --primary: #1e293b;
-            --accent: #0f766e;
-            --accent-hover: #115e59;
-            --bg-color: #f8fafc;
+            --primary: #14261a;
+            --brand: #3d9b35;
+            --brand-dark: #2c7a26;
+            --brand-soft: #eaf5e8;
+            --bg-color: #f5f7f5;
             --card-bg: #ffffff;
-            --text-main: #334155;
-            --text-muted: #64748b;
-            --border-radius: 12px;
-            --transition: all 0.3s ease;
+            --text-main: #2f3b33;
+            --text-muted: #6b7a70;
+            --border: #e1e7e2;
+            --danger: #c0392b;
+            --border-radius: 14px;
+            --shadow-sm: 0 1px 2px rgba(20, 38, 26, 0.06), 0 1px 3px rgba(20, 38, 26, 0.04);
+            --shadow-md: 0 12px 28px -8px rgba(20, 38, 26, 0.18);
+            --transition: all 0.25s ease;
         }
 
         * {
@@ -25,34 +32,147 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
-        header {
-            background-color: var(--card-bg);
-            padding: 2rem 1rem;
-            text-align: center;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            margin-bottom: 2rem;
+        svg.icon {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
         }
 
-        header h1 {
-            font-size: 2.25rem;
+        /* Barra superior */
+        .topbar {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .topbar-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0.6rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        /* El PNG trae mucho margen blanco: se recorta verticalmente */
+        .brand-logo {
+            width: 210px;
+            height: 62px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 0.25rem;
+            background: var(--bg-color);
+            padding: 0.3rem;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+        }
+
+        .nav-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .nav-tab:hover {
             color: var(--primary);
-            font-weight: 700;
+        }
+
+        .nav-tab.active {
+            background: var(--card-bg);
+            color: var(--brand-dark);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Encabezado del dashboard */
+        .hero {
+            background:
+                radial-gradient(circle at 85% 20%, rgba(61, 155, 53, 0.18), transparent 45%),
+                linear-gradient(135deg, #14261a 0%, #1f3d26 100%);
+            color: #fff;
+        }
+
+        .hero-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 2.75rem 1.5rem 3.5rem;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #a6dba0;
             margin-bottom: 0.5rem;
         }
 
-        header p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
+        .hero h1 {
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            color: #c9d8cc;
+            margin-top: 0.4rem;
+            font-size: 1.05rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--border-radius);
+            padding: 1rem 1.2rem;
+        }
+
+        .stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            line-height: 1.1;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #b5c7b9;
+            margin-top: 0.25rem;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1240px;
             margin: 0 auto;
             padding: 0 1.5rem 3rem 1.5rem;
         }
@@ -62,10 +182,15 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            margin-bottom: 2.5rem;
+            margin: -1.75rem 0 2rem;
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            position: relative;
         }
 
-        @media(min-width: 768px) {
+        @media(min-width: 900px) {
             .controls {
                 flex-direction: row;
                 justify-content: space-between;
@@ -76,28 +201,30 @@
         .search-box {
             position: relative;
             flex: 1;
-            max-width: 400px;
+            max-width: 420px;
         }
 
         .search-box input {
             width: 100%;
-            padding: 0.75rem 1rem 0.75rem 2.75rem;
-            border: 1px solid #cbd5e1;
-            border-radius: var(--border-radius);
-            font-size: 1rem;
+            padding: 0.7rem 1rem 0.7rem 2.6rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font: inherit;
+            font-size: 0.95rem;
             outline: none;
             transition: var(--transition);
-            background: var(--card-bg);
+            background: var(--bg-color);
         }
 
         .search-box input:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.1);
+            border-color: var(--brand);
+            background: var(--card-bg);
+            box-shadow: 0 0 0 3px rgba(61, 155, 53, 0.15);
         }
 
-        .search-box i {
+        .search-box .icon {
             position: absolute;
-            left: 1rem;
+            left: 0.9rem;
             top: 50%;
             transform: translateY(-50%);
             color: var(--text-muted);
@@ -110,107 +237,376 @@
         }
 
         .filter-btn {
-            padding: 0.6rem 1.2rem;
-            border: 1px solid #cbd5e1;
+            padding: 0.55rem 1.1rem;
+            border: 1px solid var(--border);
             background: var(--card-bg);
             color: var(--text-main);
-            border-radius: var(--border-radius);
+            border-radius: 999px;
             cursor: pointer;
+            font: inherit;
+            font-size: 0.875rem;
             font-weight: 500;
             transition: var(--transition);
         }
 
-        .filter-btn:hover, .filter-btn.active {
-            background-color: var(--accent);
+        .filter-btn:hover {
+            border-color: var(--brand);
+            color: var(--brand-dark);
+        }
+
+        .filter-btn.active {
+            background-color: var(--brand);
             color: white;
-            border-color: var(--accent);
+            border-color: var(--brand);
+        }
+
+        .results-info {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .results-info strong {
+            color: var(--primary);
         }
 
         /* Cuadrícula de productos (Grid Responsive) */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
         }
 
         .product-card {
+            position: relative;
             background: var(--card-bg);
+            border: 1px solid var(--border);
             border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow-sm);
             transition: var(--transition);
             display: flex;
             flex-direction: column;
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: #cfe3cc;
         }
+
+        /* Etiqueta de categoría sobre la imagen */
+        .product-card::before {
+            position: absolute;
+            top: 0.75rem;
+            left: 0.75rem;
+            z-index: 1;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.92);
+            color: var(--brand-dark);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .product-card[data-category="Armario"]::before { content: "Armario / Estante"; }
+        .product-card[data-category="escritorios"]::before { content: "Escritorio / Mesa"; }
+        .product-card[data-category="equipos"]::before { content: "Equipo"; }
 
         .product-image {
             width: 100%;
-            height: 220px;
+            height: 240px;
             object-fit: contain;
-            background-color: #e2e8f0;
+            background: linear-gradient(180deg, #f3f6f3 0%, #e7ece8 100%);
         }
 
         .product-content {
-            padding: 1.5rem;
+            padding: 1.1rem 1.25rem 1.25rem;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
+            border-top: 1px solid var(--border);
         }
 
+        /* En cada bloque, .product-category contiene el nombre del producto */
         .product-category {
-            font-size: 0.75rem;
+            font-size: smaller;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .product-title {
-            font-size: 1.2rem;
             color: var(--primary);
             font-weight: 600;
+            line-height: 1.35;
             margin-bottom: 0.5rem;
+        }
+
+        .product {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            white-space: pre-wrap;
+            margin-bottom: 0.25rem;
         }
 
         .product-description {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.1rem;
             flex-grow: 1;
         }
 
         .product-footer {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            grid-template-areas:
+                "price action"
+                "quota quota";
             align-items: center;
+            gap: 0.75rem;
             margin-top: auto;
+            padding-top: 0.9rem;
+            border-top: 1px dashed var(--border);
         }
 
         .product-price {
-            font-size: 1.25rem;
+            grid-area: price;
+            font-size: 1.2rem;
             font-weight: 700;
-            color: var(--primary);
+            color: var(--brand-dark);
+            font-variant-numeric: tabular-nums;
         }
 
         .btn-buy {
+            grid-area: action;
             background-color: var(--primary);
             color: white;
             border: none;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 1.1rem;
             border-radius: 8px;
             cursor: pointer;
-            font-weight: 500;
+            font: inherit;
+            font-size: 0.875rem;
+            font-weight: 600;
             transition: var(--transition);
         }
 
-        .btn-buy:hover {
-            background-color: var(--accent);
+        .btn-buy:hover:not(:disabled) {
+            background-color: var(--brand);
+        }
+
+        .btn-buy:disabled {
+            background-color: #d5dbd6;
+            color: #7d887f;
+            cursor: not-allowed;
+        }
+
+        /* Contador de cupos */
+        .quota {
+            grid-area: quota;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .quota-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 0.5rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .quota-row strong {
+            color: var(--primary);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .quota-bar {
+            height: 6px;
+            border-radius: 999px;
+            background: #e7ece8;
+            overflow: hidden;
+        }
+
+        .quota-fill {
+            height: 100%;
+            width: 0;
+            background: var(--brand);
+            border-radius: inherit;
+            transition: width 0.3s ease;
+        }
+
+        .quota-available {
+            display: block;
+            margin-top: 0.3rem;
+        }
+
+        .quota.is-low .quota-fill { background: #d9901a; }
+        .quota.is-low .quota-available { color: #b5760f; font-weight: 600; }
+        .quota.is-full .quota-fill { background: var(--danger); }
+        .quota.is-full .quota-available { color: var(--danger); font-weight: 600; }
+
+        /* Formulario de adjudicación */
+        .adj-form {
+            margin-top: 0.9rem;
+            padding: 0.85rem;
+            background: var(--brand-soft);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            animation: slideDown 0.2s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: none; }
+        }
+
+        .adj-fields {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 0.5rem;
+        }
+
+        .adj-fields input {
+            width: 100%;
+            min-width: 0;
+            padding: 0.55rem 0.7rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font: inherit;
+            font-size: 0.85rem;
+            background: #fff;
+            outline: none;
+        }
+
+        .adj-fields input:focus {
+            border-color: var(--brand);
+            box-shadow: 0 0 0 3px rgba(61, 155, 53, 0.15);
+        }
+
+        .adj-fields input[name="nombre"] {
+            text-transform: uppercase;
+        }
+
+        .adj-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
+
+        .adj-actions .btn {
+            padding: 0.45rem 0.9rem;
+            font-size: 0.8rem;
+        }
+
+        .adj-msg {
+            font-size: 0.78rem;
+        }
+
+        .adj-msg:empty { display: none; }
+        .adj-msg.error { color: var(--danger); }
+
+        /* Zoom de imagen */
+        .img-zoom {
+            position: relative;
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+
+        .img-zoom .product-image {
+            display: block;
+            transition: transform 0.2s ease;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .img-zoom:hover .product-image {
+                transform: scale(2);
+            }
+        }
+
+        .zoom-hint {
+            position: absolute;
+            right: 0.6rem;
+            bottom: 0.6rem;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.92);
+            color: var(--primary);
+            box-shadow: var(--shadow-sm);
+            display: none;
+            place-items: center;
+            pointer-events: none;
+        }
+
+        @media (hover: none) {
+            .zoom-hint { display: grid; }
+        }
+
+        /* Visor de imagen ampliada */
+        dialog.lightbox {
+            width: min(960px, calc(100% - 2rem));
+            background: transparent;
+            box-shadow: none;
+            overflow: visible;
+        }
+
+        dialog.lightbox::backdrop {
+            background: rgba(10, 18, 12, 0.9);
+        }
+
+        .lightbox img {
+            display: block;
+            max-width: 100%;
+            max-height: 80vh;
+            margin: 0 auto;
+            border-radius: 12px;
+            background: #fff;
+            object-fit: contain;
+        }
+
+        .lightbox-caption {
+            color: #fff;
+            text-align: center;
+            margin-top: 0.75rem;
+            font-weight: 500;
+        }
+
+        .lightbox-close {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--primary);
+            font-size: 1.6rem;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Aviso flotante */
+        .toast {
+            position: fixed;
+            left: 50%;
+            bottom: 1.5rem;
+            transform: translate(-50%, 200%);
+            background: var(--primary);
+            color: #fff;
+            padding: 0.75rem 1.1rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            font-size: 0.9rem;
+            z-index: 100;
+            transition: transform 0.3s ease;
+            max-width: calc(100% - 2rem);
+        }
+
+        .toast.show {
+            transform: translate(-50%, 0);
         }
 
         /* Estado sin resultados */
@@ -219,23 +615,438 @@
             text-align: center;
             padding: 3rem;
             color: var(--text-muted);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
+            background: var(--card-bg);
+            border: 1px dashed var(--border);
+            border-radius: var(--border-radius);
             display: none;
+        }
+
+        .site-footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            padding: 2rem 1rem;
+            border-top: 1px solid var(--border);
+            background: var(--card-bg);
+        }
+
+        /* Ventanas de diálogo */
+        dialog {
+            border: none;
+            border-radius: 18px;
+            padding: 0;
+            width: min(560px, calc(100% - 2rem));
+            max-height: calc(100vh - 2rem);
+            box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.35);
+            color: var(--text-main);
+            margin: auto;
+        }
+
+        dialog.dialog-sm {
+            width: min(400px, calc(100% - 2rem));
+        }
+
+        dialog::backdrop {
+            background: rgba(20, 38, 26, 0.55);
+            backdrop-filter: blur(3px);
+        }
+
+        .dialog-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dialog-header h2 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dialog-close {
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            line-height: 1;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 8px;
+        }
+
+        .dialog-close:hover {
+            background: var(--bg-color);
+            color: var(--primary);
+        }
+
+        .dialog-body {
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+
+        .dialog-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border);
+            background: #fafbfa;
+            flex-wrap: wrap;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .form-field.full {
+            grid-column: 1 / -1;
+        }
+
+        @media(max-width: 520px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .brand-logo { width: 150px; height: 44px; }
+            .nav-tab span { display: none; }
+        }
+
+        .form-field label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-field input,
+        .form-field select {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font: inherit;
+            font-size: 0.9rem;
+            background: var(--card-bg);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-field input:focus,
+        .form-field select:focus {
+            border-color: var(--brand);
+            box-shadow: 0 0 0 3px rgba(61, 155, 53, 0.15);
+        }
+
+        .hint {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .error-msg {
+            font-size: 0.8rem;
+            color: var(--danger);
+            min-height: 1.2em;
+            margin-top: 0.5rem;
+        }
+
+        .image-picker {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            padding: 0.75rem;
+            border: 1px dashed #c4d4c6;
+            border-radius: 12px;
+            background: var(--bg-color);
+        }
+
+        .image-preview {
+            width: 88px;
+            height: 88px;
+            border-radius: 10px;
+            background: #e7ece8;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            border: 1px solid transparent;
+            padding: 0.6rem 1.1rem;
+            border-radius: 10px;
+            font: inherit;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background: var(--brand);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: var(--brand-dark);
+        }
+
+        .btn-secondary {
+            background: var(--card-bg);
+            color: var(--text-main);
+            border-color: var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--brand);
+            color: var(--brand-dark);
+        }
+
+        .btn-danger-link {
+            background: transparent;
+            color: var(--danger);
+            margin-right: auto;
+        }
+
+        .btn-danger-link:hover {
+            background: #fbeceb;
+        }
+
+        .success-banner {
+            display: flex;
+            gap: 0.6rem;
+            align-items: flex-start;
+            background: var(--brand-soft);
+            color: var(--brand-dark);
+            border-radius: 12px;
+            padding: 0.85rem 1rem;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .code-block {
+            background: #14261a;
+            color: #d6eed3;
+            font-family: Consolas, 'Courier New', monospace;
+            font-size: 0.75rem;
+            line-height: 1.5;
+            padding: 1rem;
+            border-radius: 12px;
+            overflow-x: auto;
+            white-space: pre;
+            max-height: 260px;
+        }
+
+        .admin-summary {
+            margin-top: 1.25rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Pestañas y secciones del panel de administración */
+        .admin-tabs {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .admin-tab {
+            border: none;
+            background: none;
+            font: inherit;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            padding: 0.6rem 0.9rem;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px;
+            cursor: pointer;
+        }
+
+        .admin-tab.active {
+            color: var(--brand-dark);
+            border-color: var(--brand);
+        }
+
+        .admin-tabs .btn-danger-link {
+            margin-left: auto;
+            margin-right: 0;
+            padding: 0.4rem 0.7rem;
+            font-size: 0.8rem;
+        }
+
+        .panel-section {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .panel-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .panel-section h3 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--primary);
+            margin-bottom: 0.35rem;
+        }
+
+        .panel-section p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .product-list {
+            list-style: none;
+            max-height: 50vh;
+            overflow-y: auto;
+        }
+
+        .product-list li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+            border-top: 1px solid var(--border);
+            font-size: 0.85rem;
+        }
+
+        .product-list li:first-child {
+            border-top: 0;
+        }
+
+        .panel-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .status-pill {
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: 999px;
+            background: #eef1ef;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .status-pill.on {
+            background: var(--brand-soft);
+            color: var(--brand-dark);
+        }
+
+        /* Tablets */
+        @media (min-width: 521px) and (max-width: 900px) {
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* Celulares */
+        @media (max-width: 640px) {
+            .topbar-inner { padding: 0.5rem 1rem; }
+            .hero-inner { padding: 1.75rem 1rem 3rem; }
+            .stats { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; margin-top: 1.25rem; }
+            .stat:first-child { grid-column: 1 / -1; }
+            .stat { padding: 0.75rem 0.9rem; }
+            .stat-value { font-size: 1.35rem; }
+            .container { padding: 0 1rem 2rem; }
+            .controls { padding: 0.75rem; }
+            .search-box { max-width: none; }
+            .filter-buttons {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                margin: 0 -0.75rem;
+                padding: 0 0.75rem 0.25rem;
+                scrollbar-width: none;
+            }
+            .filter-buttons::-webkit-scrollbar { display: none; }
+            .filter-btn { white-space: nowrap; flex-shrink: 0; }
+            .product-grid { gap: 1rem; }
+            input, select { font-size: 16px !important; }
+            dialog { width: calc(100% - 1rem); max-height: calc(100vh - 1rem); }
+            .dialog-header, .dialog-footer { padding: 0.9rem 1.1rem; }
+            .dialog-body { padding: 1.1rem; }
+            .admin-tabs { padding: 0.25rem 0.75rem 0; }
+            .dialog-footer .btn { flex: 1; justify-content: center; }
+        }
+
+        @media (max-width: 520px) {
+            .product-grid { grid-template-columns: 1fr; }
+            .product-image { height: 260px; }
+            .adj-fields { grid-template-columns: 1fr; }
+        }
+
+        [hidden] {
+            display: none !important;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Santa Margarita S.A.</h1>
-        <p>Feria de Articulos Mobiliarios San Juan Bautista</p>
+    <!-- Iconos SVG reutilizables -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></symbol>
+        <symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></symbol>
+        <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"></path></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></symbol>
+        <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></symbol>
+        <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 21h16"></path></symbol>
+        <symbol id="i-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></symbol>
+    </svg>
+
+    <header class="topbar">
+        <div class="topbar-inner">
+            <img src="./img/0.jpg" alt="Santa Margarita S.A." class="brand-logo">
+            <nav class="nav-tabs">
+                <button class="nav-tab active" type="button">
+                    <svg class="icon"><use href="#i-grid"></use></svg><span>Dashboard</span>
+                </button>
+                <button class="nav-tab" type="button" id="adminTab">
+                    <svg class="icon"><use href="#i-lock"></use></svg><span>Administración</span>
+                </button>
+            </nav>
+        </div>
     </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-eyebrow">Catálogo de mobiliario</span>
+            <h1>Feria de Artículos Mobiliarios</h1>
+            <p>San Juan Bautista</p>
+            <div class="stats">
+                <div class="stat"><div class="stat-value" id="statTotal">42</div><div class="stat-label">Artículos disponibles</div></div>
+                <div class="stat"><div class="stat-value" id="statArmario">27</div><div class="stat-label">Armarios / Gavetas / Estantes</div></div>
+                <div class="stat"><div class="stat-value" id="statEscritorios">13</div><div class="stat-label">Escritorios / Mesas</div></div>
+                <div class="stat"><div class="stat-value" id="statEquipos">2</div><div class="stat-label">Equipos / Electrodomésticos</div></div>
+                <div class="stat"><div class="stat-value" id="statAdj">0</div><div class="stat-label">Adjudicaciones registradas</div></div>
+            </div>
+        </div>
+    </section>
 
     <div class="container">
         <!-- Controles de búsqueda y filtrado -->
         <div class="controls">
             <div class="search-box">
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <svg class="icon"><use href="#i-search"></use></svg>
                 <input type="text" id="searchInput" placeholder="Buscar mobiliario...">
             </div>
             <div class="filter-buttons">
@@ -246,616 +1057,1093 @@
             </div>
         </div>
 
+        <p class="results-info" id="resultsInfo">Mostrando <strong>42</strong> de 42 artículos</p>
+
         <!-- Grid de Productos -->
         <div class="product-grid" id="productGrid">
             <!-- Producto 1 -->
             <div class="product-card" data-category="Armario" data-name="Armario alto de melamina con 2 puertas" style="display: flex;">
-                <img src="./img/1.jpeg" alt="Silla Ergonómica Apex" class="product-image">
+                <div class="img-zoom"><img src="./img/1.jpeg" alt="Silla Ergonómica Apex" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Armario alto de melamina con 2 puertas</span>
                     <p class="product">Estado: Bueno   COD: 001
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 110.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
 
             <!-- Producto 2 -->
             <div class="product-card" data-category="Armario" data-name="Armario de melamina, 2 Puertas Corredizas" style="display: flex;">
-                <img src="./img/2.jpeg" alt="Escritorio Nordic Flex" class="product-image">
+                <div class="img-zoom"><img src="./img/2.jpeg" alt="Escritorio Nordic Flex" class="product-image" style="transform-origin: 78.592% 95.7778%;"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Armario de melamina, 2 Puertas Corredizas</span>
                     <p class="product">Estado: Bueno   COD: 002
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 125.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
 
             <!-- Producto 3 -->
             <div class="product-card" data-category="Armario" data-name="Gavetero de melamina de 4 compartimiento" style="display: flex;">
-                <img src="./img/3.jpeg" alt="Organizador Minimalist Cube" class="product-image">
+                <div class="img-zoom"><img src="./img/3.jpeg" alt="Organizador Minimalist Cube" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Gavetero de melamina de 4 compartimiento</span>
                     <p class="product">Estado: Bueno COD:003
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 125.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
 
             <!-- Producto 4 -->
             <div class="product-card" data-category="Armario" data-name="Armario de melamina, 2 puertas corredizas" style="display: flex;">
-                <img src="./img/4.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/4.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Armario de melamina, 2 puertas corredizas</span>
                     <p class="product">Estado: Bueno COD: 004
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 125.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
 
             <!-- Producto 5 -->
             <div class="product-card" data-category="Armario" data-name="Estante de melamina, 5 compartimientos" style="display: flex;">
-                <img src="./img/5.jpeg" alt="Mesa de Juntas Linear" class="product-image">
+                <div class="img-zoom"><img src="./img/5.jpeg" alt="Mesa de Juntas Linear" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Estante de melamina, 5 compartimientos</span>
                     <p class="product">Estado: Bueno COD:005
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 100.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
 
             <!-- Producto 6 -->
             <div class="product-card" data-category="Armario" data-name="Armario de metal, 2 puertas corredizas" style="display: flex;">
-                <img src="./img/6.jpeg" alt="Archivador Stealth File" class="product-image">
+                <div class="img-zoom"><img src="./img/6.jpeg" alt="Archivador Stealth File" class="product-image" style="transform-origin: 81.1063% 33.6927%;"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Armario de metal, 2 puertas corredizas</span>
                     <p class="product">Estado: Bueno COD: 006
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 150.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
 
     <!-- Producto 7 -->
      <div class="product-card" data-category="Armario" data-name="Armario de metal, 2 puertas corredizas" style="display: flex;">
-                <img src="./img/7.jpeg" alt="Archivador Stealth File" class="product-image">
+                <div class="img-zoom"><img src="./img/7.jpeg" alt="Archivador Stealth File" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Armario de metal, 2 puertas corredizas</span>
                     <p class="product">Estado: Bueno COD: 007
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 150.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
 
     <!-- Producto 8 -->
             <div class="product-card" data-category="Armario" data-name="Armario de melamina, 2 puertas corredizas" style="display: flex;">
-                <img src="./img/8.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/8.jpeg" alt="Silla Lounge Zen" class="product-image" style="transform-origin: 61.3505% 97.8594%;"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Armario de melamina, 2 puertas corredizas</span>
                     <p class="product">Estado: Bueno COD: 008
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 160.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
 
     <!-- Producto 9 -->
             <div class="product-card" data-category="Armario" data-name="Armario de metal, 2 puertas" style="display: flex;">
-                <img src="./img/9.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/9.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Armario de metal, 2 puertas</span>
                     <p class="product">Estado: Bueno COD: 009
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 145.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
 
               <!-- Producto 10 -->
             <div class="product-card" data-category="Armario" data-name="Armario de metal, 2 puertas" style="display: flex;">
-                <img src="./img/10.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/10.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Armario de metal, 2 puertas</span>
                     <p class="product">Estado: Bueno COD: 010
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 145.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
      
               <!-- Producto 11 -->
             <div class="product-card" data-category="Armario" data-name="Armario de melamina bajo, 2 puertas" style="display: flex;">
-                <img src="./img/11.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/11.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Armario de melamina bajo, 2 puertas</span>
                     <p class="product">Estado: Bueno COD: 011
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 155.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
 
               <!-- Producto 12 -->
             <div class="product-card" data-category="Armario" data-name="Armario de melamina, 2 puertas corredizas" style="display: flex;">
-                <img src="./img/12.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/12.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Armario de melamina, 2 puertas corredizas</span>
                     <p class="product">Estado: Bueno COD: 012
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 125.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
 
               <!-- Producto 13 -->
             <div class="product-card" data-category="Armario" data-name="Armario de melamina, 2 puertas corredizas" style="display: flex;">
-                <img src="./img/13.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/13.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Armario de melamina, 2 puertas corredizas</span>
                     <p class="product">Estado: Bueno COD: 013
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 140.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
 
               <!-- Producto 14 -->
             <div class="product-card" data-category="Armario" data-name="Armario de metal, 2 puertas" style="display: flex;">
-                <img src="./img/14.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/14.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Armario de metal, 2 puertas</span>
                     <p class="product">Estado: Bueno COD: 014
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 150.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
 
               <!-- Producto 15 -->
             <div class="product-card" data-category="Armario" data-name="Gavetero archivador de metal, 4 compartimientos" style="display: flex;">
-                <img src="./img/15.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/15.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Gavetero archivador de metal, 4 compartimientos</span>
                     <p class="product">Estado: Bueno COD: 015
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 145.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
           
               <!-- Producto 16 -->
             <div class="product-card" data-category="Armario" data-name="Armario de melamina organizador, 1 puertas" style="display: flex;">
-                <img src="./img/16.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/16.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Armario de melamina organizador, 1 puertas</span>
                     <p class="product">Estado: Bueno COD: 016
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 120.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
 
               <!-- Producto 17 -->
             <div class="product-card" data-category="Armario" data-name="Armario de melamina, 4 puertas corredizas" style="display: flex;">
-                <img src="./img/17.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/17.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Armario de melamina, 4 puertas corredizas</span>
                     <p class="product">Estado:Bueno COD: 0017
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 170.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
 
               <!-- Producto 18 -->
             <div class="product-card" data-category="Armario" data-name="Armario de melamina, 2 puertas corredizas" style="display: flex;">
-                <img src="./img/18.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/18.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Armario de melamina, 2 puertas corredizas</span>
                     <p class="product">Estado: Bueno COD: 018
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 140.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
 
               <!-- Producto 19 -->
             <div class="product-card" data-category="Armario" data-name="Armario de metal, 2 puertas" style="display: flex;">
-                <img src="./img/19.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/19.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Armario de metal, 2 puertas</span>
                     <p class="product">Estado: Bueno COD: 019
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 140.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
 
               <!-- Producto 20 -->
             <div class="product-card" data-category="Armario" data-name="Armario de metal, 2 puertas" style="display: flex;">
-                <img src="./img/20.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/20.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Armario de metal, 2 puertas</span>
                     <p class="product">Estado: Bueno COD: 020
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 135.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
 
               <!-- Producto 21 -->
             <div class="product-card" data-category="Armario" data-name="Organizador de melamina, 8 compartimiento" style="display: flex;">
-                <img src="./img/21.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/21.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Organizador de melamina, 8 compartimiento</span>
                     <p class="product">Estado: Bueno COD: 021
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 155.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
 
               <!-- Producto 22 -->
             <div class="product-card" data-category="Armario" data-name="Armario bajo de melamina, 2 puertas" style="display: flex;">
-                <img src="./img/22.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/22.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Armario bajo de melamina, 2 puertas</span>
                     <p class="product">Estado: Bueno COD: 022
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 125.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
 
               <!-- Producto 23 -->
             <div class="product-card" data-category="Armario" data-name="Organizador de Melamina, 12 compartimiento" style="display: flex;">
-                <img src="./img/23.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/23.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Organizador de Melamina, 12 compartimiento</span>
                     <p class="product">Estado: Bueno COD: 023
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 170.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
 
               <!-- Producto 24 -->
             <div class="product-card" data-category="Armario" data-name="Armario bajo de melamina, 2 puertas" style="display: flex;">
-                <img src="./img/24.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/24.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Armario bajo de melamina, 2 puertas</span>
                     <p class="product">Estado: Bueno COD: 024
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 120.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
             
       <!-- Producto 25 -->
             <div class="product-card" data-category="Armario" data-name="Armario de melamina, 2 puertas corredizas" style="display: flex;">
-                <img src="./img/25.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/25.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Armario de melamina, 2 puertas corredizas</span>
                     <p class="product">Estado: Bueno COD: 025
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 135.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
 
       <!-- Producto 26 -->
             <div class="product-card" data-category="Armario" data-name="Armario de melamina, 2 puertas corredizas" style="display: flex;">
-                <img src="./img/26.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/26.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Armario de melamina, 2 puertas corredizas</span>
                     <p class="product">Estado: Bueno COD: 026
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 135.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
     
       <!-- Producto 27 -->
             <div class="product-card" data-category="Armario" data-name="Gavetero archivador de metal, 4 compartimientos" style="display: flex;">
-                <img src="./img/27.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/27.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Gavetero archivador de metal, 4 compartimientos</span>
                     <p class="product">Estado: Bueno COD: 027
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 145.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
    
              <!-- Producto 28 -->
             <div class="product-card" data-category="escritorios" data-name="Mesa de Impresora" style="display: flex;">
-                <img src="./img/28.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/28.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Mesa de Impresora</span>
                     <p class="product">Estado: Bueno COD: 028
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 125.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
             
              <!-- Producto 29 -->
             <div class="product-card" data-category="escritorios" data-name="Escritorio de melamina en forma de L" style="display: flex;">
-                <img src="./img/29.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/29.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Escritorio de melamina en forma de L</span>
                     <p class="product">Estado: Bueno COD: 029
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 165.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
             
              <!-- Producto 30 -->
             <div class="product-card" data-category="escritorios" data-name="Escritorio de melamina, 2 cajones" style="display: flex;">
-                <img src="./img/30.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/30.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Escritorio de melamina, 2 cajones</span>
                     <p class="product">Estado: Bueno COD: 030
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 135.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
             
              <!-- Producto 31 -->
             <div class="product-card" data-category="escritorios" data-name="Escritorio de melamina" style="display: flex;">
-                <img src="./img/31.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/31.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Escritorio de melamina</span>
                     <p class="product">Estado: Bueno COD: 031
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 130.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
 
              <!-- Producto 32 -->
             <div class="product-card" data-category="escritorios" data-name="Mesa centro chica" style="display: flex;">
-                <img src="./img/32.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/32.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Mesa centro chica</span>
                     <p class="product">Estado: Bueno COD: 032
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 125.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
             
              <!-- Producto 33 -->
             <div class="product-card" data-category="escritorios" data-name="Mesada mostradora de Recepcion" style="display: flex;">
-                <img src="./img/33.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/33.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Mesada mostradora de Recepcion</span>
                     <p class="product">Estado: Bueno COD: 033
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 210.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
             
              <!-- Producto 34 -->
             <div class="product-card" data-category="escritorios" data-name="Escritorio de melamina con 2 cajones" style="display: flex;">
-                <img src="./img/34.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/34.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Escritorio de melamina con 2 cajones</span>
                     <p class="product">Estado: Bueno COD: 034
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 125.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
             
              <!-- Producto 35 -->
             <div class="product-card" data-category="escritorios" data-name="Escritorio de melamina con 2 cajones" style="display: flex;">
-                <img src="./img/35.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/35.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Escritorio de melamina con 2 cajones</span>
                     <p class="product">Estado: Bueno COD: 035
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 130.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
             
              <!-- Producto 36 -->
             <div class="product-card" data-category="escritorios" data-name="Escritorio de melamina" style="display: flex;">
-                <img src="./img/36.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/36.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Escritorio de melamina</span>
                     <p class="product">Estado: Bueno COD: 036
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 135.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
             
              <!-- Producto 37 -->
             <div class="product-card" data-category="escritorios" data-name="Escritorio de melamina con 2 cajones" style="display: flex;">
-                <img src="./img/37.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/37.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Escritorio de melamina con 2 cajones</span>
                     <p class="product">Estado: Bueno COD: 037
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 135.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
             
              <!-- Producto 38 -->
             <div class="product-card" data-category="escritorios" data-name="Escritorio de Melamina con 2 Cajones" style="display: flex;">
-                <img src="./img/38.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/38.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Escritorio de Melamina con 2 Cajones</span>
                     <p class="product">Estado: Bueno COD: 038
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 125.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
             
              <!-- Producto 39 -->
             <div class="product-card" data-category="escritorios" data-name="Escritorio de melamina" style="display: flex;">
-                <img src="./img/39.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/39.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Escritorio de melamina</span>
                     <p class="product">Estado: Bueno COD: 039
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 135.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
             
              <!-- Producto 40 -->
             <div class="product-card" data-category="escritorios" data-name="Escritorio de Melamina marron" style="display: flex;">
-                <img src="./img/40.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/40.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Escritorio de Melamina marron</span>
                     <p class="product">Estado: Bueno COD: 040
                     </p><p class="product-description">Medidas________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 200.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
             
              <!-- Producto 41 -->
             <div class="product-card" data-category="equipos" data-name="Heladera de 2 puertas" style="display: flex;">
-                <img src="./img/41.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/41.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Heladera de 2 puertas</span>
                     <p class="product">Estado: Bueno COD: 041
                     </p><p class="product-description">Capacidad________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 1.000.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
             
              <!-- Producto 42 -->
             <div class="product-card" data-category="equipos" data-name="Frezzer Congelador de 1 puerta" style="display: flex;">
-                <img src="./img/42.jpeg" alt="Silla Lounge Zen" class="product-image">
+                <div class="img-zoom"><img src="./img/42.jpeg" alt="Silla Lounge Zen" class="product-image"><span class="zoom-hint"><svg class="icon"><use href="#i-expand"></use></svg></span></div>
                 <div class="product-content">
                     <span class="product-category">Frezzer Congelador de 1 puerta</span>
                     <p class="product">Estado: Bueno COD: 042
                     </p><p class="product-description">Capacidad________</p>
                     <div class="product-footer">
                         <span class="product-price">Gs. 850.000</span>
-                        <button class="btn-buy" onclick="alert('Producto añadido al carrito')">Comprar</button>
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count">0 / 20</strong></div>
+                        <div class="quota-bar"><div class="quota-fill" style="width: 0%;"></div></div>
+                        <span class="quota-available">20 cupos disponibles</span>
+                    </div>
+                    
+                    
+                        <button class="btn-buy" type="button">Adjudicar</button>
                     </div>
                 </div>
             </div>
             <!-- Mensaje sin resultados -->
-        <div class="no-results" id="noResults" style="display: none;">
+        
+
+            
+            
+
+            
+            
+
+            
+            
+<div class="no-results" id="noResults" style="display: none;">
             No se encontraron productos que coincidan con tu búsqueda.
         </div>
     </div></div>
 
+    <footer class="site-footer">
+        © Santa Margarita S.A. · Feria de Artículos Mobiliarios San Juan Bautista
+    </footer>
+
+    <!-- Diálogo de acceso (contraseña) -->
+    <dialog id="loginDialog" class="dialog-sm">
+        <form id="loginForm" novalidate="">
+            <div class="dialog-header">
+                <h2><svg class="icon"><use href="#i-lock"></use></svg>Acceso restringido</h2>
+                <button type="button" class="dialog-close" data-close="" aria-label="Cerrar">×</button>
+            </div>
+            <div class="dialog-body">
+                <div class="form-field">
+                    <label for="adminPassword">Contraseña</label>
+                    <input type="password" id="adminPassword" autocomplete="current-password" placeholder="Ingrese la contraseña">
+                </div>
+                <p class="error-msg" id="loginError"></p>
+            </div>
+            <div class="dialog-footer">
+                <button type="button" class="btn btn-secondary" data-close="">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Ingresar</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- Diálogo para cargar un nuevo producto -->
+    <dialog id="productDialog">
+        <div class="dialog-header">
+            <h2><svg class="icon"><use href="#i-lock"></use></svg>Administración</h2>
+            <button type="button" class="dialog-close" data-close="" aria-label="Cerrar">×</button>
+        </div>
+
+        <div class="admin-tabs">
+            <button type="button" class="admin-tab" data-panel="panelProduct">Nuevo producto</button>
+            <button type="button" class="admin-tab" data-panel="panelAdj">Adjudicaciones</button>
+            <button type="button" class="admin-tab active" data-panel="panelList">Productos</button>
+            <button type="button" class="btn btn-danger-link" id="logoutBtn">Cerrar sesión</button>
+        </div>
+
+        <div id="panelProduct" hidden="">
+        <form id="productForm">
+            <div class="dialog-body">
+                <div class="form-grid">
+                    <div class="form-field full">
+                        <label for="pImage">Imagen (desde la carpeta img)</label>
+                        <div class="image-picker">
+                            <img id="pPreview" class="image-preview" alt="" hidden="">
+                            <div>
+                                <input type="file" id="pImage" accept="image/*" required="">
+                                <p class="hint">Seleccione una imagen que ya esté en la carpeta <strong>img</strong> del proyecto.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-field full">
+                        <label for="pName">Nombre del producto</label>
+                        <input type="text" id="pName" required="" placeholder="Ej.: Armario alto de melamina con 2 puertas">
+                    </div>
+                    <div class="form-field">
+                        <label for="pCategory">Categoría</label>
+                        <select id="pCategory" required=""><option value="Armario">Armario/Gaveta/Estantes</option><option value="escritorios">Escritorios/Mesas</option><option value="equipos">Equipos/Electrodomesticos</option><option value="Armario">Armario/Gaveta/Estantes</option><option value="escritorios">Escritorios/Mesas</option><option value="equipos">Equipos/Electrodomesticos</option><option value="Armario">Armario/Gaveta/Estantes</option><option value="escritorios">Escritorios/Mesas</option><option value="equipos">Equipos/Electrodomesticos</option></select>
+                    </div>
+                    <div class="form-field">
+                        <label for="pEstado">Estado</label>
+                        <select id="pEstado">
+                            <option>Nuevo</option>
+                            <option>Muy bueno</option>
+                            <option selected="">Bueno</option>
+                            <option>Regular</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="pCod">Código</label>
+                        <input type="text" id="pCod" required="">
+                    </div>
+                    <div class="form-field">
+                        <label for="pPrice">Precio (Gs.)</label>
+                        <input type="text" id="pPrice" required="" inputmode="numeric" autocomplete="off" placeholder="110.000">
+                    </div>
+                    <div class="form-field full">
+                        <label for="pDetail">Medidas / Capacidad</label>
+                        <input type="text" id="pDetail" placeholder="Medidas: 80 x 40 x 180 cm">
+                    </div>
+                </div>
+                <p class="admin-summary" id="adminSummary">3 producto(s) agregados desde este navegador y aún no guardados en index.html.</p>
+            </div>
+            <div class="dialog-footer">
+                <button type="button" class="btn btn-secondary" data-close="">Cancelar</button>
+                <button type="submit" class="btn btn-primary"><svg class="icon"><use href="#i-plus"></use></svg>Agregar producto</button>
+            </div>
+        </form>
+
+        <div id="productResult" hidden="">
+            <div class="dialog-body">
+                <div class="success-banner">
+                    <svg class="icon"><use href="#i-check"></use></svg>
+                    <div id="resultMsg">Producto agregado al catálogo. Este es el bloque generado; para dejarlo fijo péguelo en <strong>index.html</strong> o descargue el archivo actualizado.</div>
+                </div>
+                <pre class="code-block" id="generatedCode" hidden=""></pre>
+            </div>
+            <div class="dialog-footer">
+                <button type="button" class="btn btn-secondary" id="copyBtn" hidden=""><svg class="icon"><use href="#i-copy"></use></svg>Copiar bloque</button>
+                <button type="button" class="btn btn-secondary" id="saveHtmlBtn"><svg class="icon"><use href="#i-download"></use></svg>Guardar en index.html</button>
+                <button type="button" class="btn btn-secondary" id="downloadBtn" hidden=""><svg class="icon"><use href="#i-download"></use></svg>Descargar index.html</button>
+                <button type="button" class="btn btn-primary" id="addAnotherBtn"><svg class="icon"><use href="#i-plus"></use></svg>Agregar otro</button>
+            </div>
+        </div>
+        </div>
+
+        <!-- Panel de adjudicaciones -->
+        <!-- Lista de productos para eliminar -->
+        <div id="panelList">
+            <div class="dialog-body">
+                <div class="panel-section">
+                    <h3>Eliminar productos</h3>
+                    <p>El producto se quita de la página y se guarda el cambio en <strong>index.html</strong>. También se borran sus adjudicaciones.</p>
+                    <ul class="product-list" id="productList"></ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="panelAdj" hidden="">
+            <div class="dialog-body">
+                <div class="panel-section">
+                    <h3>Resumen</h3>
+                    <p id="adjSummary"><strong>0</strong> adjudicaciones registradas · <strong>0</strong> producto(s) con cupo completo.</p>
+                    <div class="panel-actions">
+                        <button type="button" class="btn btn-secondary" id="downloadTxtBtn"><svg class="icon"><use href="#i-download"></use></svg>Descargar adjudicaciones.txt</button>
+                        <button type="button" class="btn btn-danger-link" id="clearAdjBtn">Borrar registros de este navegador</button>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>Guardar localmente <span class="status-pill" id="localStatus">Sin vincular</span></h3>
+                    <p>Vincule un archivo <strong>adjudicaciones.txt</strong> en esta computadora. Cada nueva adjudicación se escribe en ese mismo archivo, una debajo de la otra y agrupada por categoría. Disponible en Chrome o Edge de escritorio.</p>
+                    <div class="panel-actions">
+                        <button type="button" class="btn btn-secondary" id="linkFileBtn">Vincular archivo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Visor de imagen ampliada -->
+    <dialog id="lightbox" class="lightbox">
+        <button type="button" class="lightbox-close" aria-label="Cerrar">×</button>
+        <img id="lightboxImg" alt="">
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+    </dialog>
+
+    <div class="toast" id="toast" role="status">Producto eliminado y guardado en index.html</div>
+
     <!-- Script JavaScript interactivo -->
     <script>
+        // Contraseña del panel de administración (cámbiela aquí).
+        // Nota: al ser una página sin servidor, esto solo evita cargas accidentales; no es seguridad real.
+        const ADMIN_PASSWORD = 'SantaMargarita2026';
+        const STORAGE_KEY = 'sm_productos_agregados';
+        const SESSION_KEY = 'sm_admin_ok';
+
+        // Formulario de Google que recibe cada adjudicación: dirección terminada en /formResponse
+        // y el "entry.NNN" de cada pregunta. Vacío = no se envía. El cupo se cuenta en cada navegador.
+        const GOOGLE_FORM = {
+            url: '',
+            entries: { category: '', cod: '', product: '', ci: '', nombre: '', fecha: '' }
+        };
+        const CUPO_MAXIMO = 20;
+        const ADJ_KEY = 'sm_adjudicaciones';
+        const TXT_NAME = 'adjudicaciones.txt';
+
         const searchInput = document.getElementById('searchInput');
         const filterButtons = document.querySelectorAll('.filter-btn');
-        const productCards = document.querySelectorAll('.product-card');
+        const productGrid = document.getElementById('productGrid');
         const noResults = document.getElementById('noResults');
+        const resultsInfo = document.getElementById('resultsInfo');
 
         let currentCategory = 'all';
         let currentSearchQuery = '';
 
+        const getCards = () => productGrid.querySelectorAll('.product-card');
+
         // Función principal de filtrado
         function filterProducts() {
             let visibleCount = 0;
+            const cards = getCards();
 
-            productCards.forEach(card => {
+            cards.forEach(card => {
                 const category = card.getAttribute('data-category');
                 const name = card.getAttribute('data-name').toLowerCase();
 
@@ -871,11 +2159,19 @@
             });
 
             // Mostrar u ocultar mensaje de sin resultados
-            if (visibleCount === 0) {
-                noResults.style.display = 'block';
-            } else {
-                noResults.style.display = 'none';
-            }
+            noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+            resultsInfo.innerHTML = `Mostrando <strong>${visibleCount}</strong> de ${cards.length} artículos`;
+        }
+
+        // Indicadores del dashboard
+        function updateStats() {
+            const cards = [...getCards()];
+            const count = cat => cards.filter(c => c.dataset.category === cat).length;
+            document.getElementById('statTotal').textContent = cards.length;
+            document.getElementById('statArmario').textContent = count('Armario');
+            document.getElementById('statEscritorios').textContent = count('escritorios');
+            document.getElementById('statEquipos').textContent = count('equipos');
+            document.getElementById('statAdj').textContent = adjudicaciones.length;
         }
 
         // Evento para los botones de categoría
@@ -883,7 +2179,7 @@
             button.addEventListener('click', () => {
                 filterButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
-                
+
                 currentCategory = button.getAttribute('data-filter');
                 filterProducts();
             });
@@ -894,6 +2190,667 @@
             currentSearchQuery = e.target.value.toLowerCase().trim();
             filterProducts();
         });
+
+        /* ---------- Almacenamiento local (sin base de datos) ---------- */
+        function storageGet(store, key) {
+            try { return store.getItem(key); } catch (e) { return null; }
+        }
+
+        function storageSet(store, key, value) {
+            try { store.setItem(key, value); } catch (e) { /* almacenamiento no disponible */ }
+        }
+
+        function loadSavedProducts() {
+            try { return JSON.parse(storageGet(localStorage, STORAGE_KEY)) || []; } catch (e) { return []; }
+        }
+
+        function saveProducts(list) {
+            storageSet(localStorage, STORAGE_KEY, JSON.stringify(list));
+        }
+
+        /* ---------- Generación del bloque de producto ---------- */
+        function escapeHtml(text) {
+            return String(text)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        function formatPrice(value) {
+            return 'Gs. ' + String(Math.round(Number(value))).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        function buildCardHtml(p) {
+            const name = escapeHtml(p.name);
+            return `            <!-- Producto ${escapeHtml(p.cod)} -->
+            <div class="product-card" data-category="${escapeHtml(p.category)}" data-name="${name}" style="display: flex;">
+                <img src="./img/${escapeHtml(p.image)}" alt="${name}" class="product-image">
+                <div class="product-content">
+                    <span class="product-category">${name}</span>
+                    <p class="product">Estado: ${escapeHtml(p.estado)}   COD: ${escapeHtml(p.cod)}
+                    </p><p class="product-description">${escapeHtml(p.detail || 'Medidas________')}</p>
+                    <div class="product-footer">
+                        <span class="product-price">${formatPrice(p.price)}</span>
+                        <button class="btn-buy" type="button">Adjudicar</button>
+                    </div>
+                </div>
+            </div>`;
+        }
+
+        function cardExists(p) {
+            return [...getCards()].some(card =>
+                card.dataset.name === p.name &&
+                card.querySelector('.product-image')?.getAttribute('src') === './img/' + p.image);
+        }
+
+        function insertCard(p) {
+            noResults.insertAdjacentHTML('beforebegin', '\n' + buildCardHtml(p) + '\n');
+            const card = noResults.previousElementSibling;
+            enhanceCard(card);
+            updateQuota(card);
+        }
+
+        function nextCode() {
+            let max = 0;
+            getCards().forEach(card => {
+                const match = card.querySelector('.product')?.textContent.match(/COD:\s*(\d+)/);
+                if (match) max = Math.max(max, parseInt(match[1], 10));
+            });
+            return String(max + 1).padStart(3, '0');
+        }
+
+        /* ---------- Adjudicaciones: cupos, zoom y formulario ---------- */
+        let adjudicaciones = [];
+        try { adjudicaciones = JSON.parse(storageGet(localStorage, ADJ_KEY)) || []; } catch (e) { adjudicaciones = []; }
+
+        function normalizeCod(cod) {
+            const n = parseInt(cod, 10);
+            return isNaN(n) ? String(cod).trim() : String(n).padStart(3, '0');
+        }
+
+        function categoryLabel(value) {
+            const btn = [...filterButtons].find(b => b.dataset.filter === value);
+            return (btn ? btn.textContent.trim() : String(value)).toUpperCase();
+        }
+
+        function cardInfo(card) {
+            const match = card.querySelector('.product')?.textContent.match(/COD:\s*(\d+)/);
+            return {
+                cod: normalizeCod(match ? match[1] : card.dataset.name),
+                name: card.dataset.name,
+                category: categoryLabel(card.dataset.category)
+            };
+        }
+
+        const countFor = cod => adjudicaciones.filter(r => r.cod === cod).length;
+
+        // Agrega el contenedor de zoom y el contador de cupos (no forman parte del bloque guardado)
+        function enhanceCard(card) {
+            const img = card.querySelector('.product-image');
+            if (img && !img.parentElement.classList.contains('img-zoom')) {
+                const wrap = document.createElement('div');
+                wrap.className = 'img-zoom';
+                img.before(wrap);
+                wrap.append(img);
+                wrap.insertAdjacentHTML('beforeend', '<span class="zoom-hint"><svg class="icon"><use href="#i-expand"/></svg></span>');
+            }
+            const price = card.querySelector('.product-price');
+            if (price && !card.querySelector('.quota')) {
+                price.insertAdjacentHTML('afterend', `
+                    <div class="quota">
+                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count"></strong></div>
+                        <div class="quota-bar"><div class="quota-fill"></div></div>
+                        <span class="quota-available"></span>
+                    </div>`);
+            }
+        }
+
+        function updateQuota(card) {
+            const quota = card.querySelector('.quota');
+            const btn = card.querySelector('.btn-buy');
+            if (!quota || !btn) return;
+            const used = Math.min(countFor(cardInfo(card).cod), CUPO_MAXIMO);
+            const left = CUPO_MAXIMO - used;
+
+            quota.querySelector('.quota-count').textContent = `${used} / ${CUPO_MAXIMO}`;
+            quota.querySelector('.quota-fill').style.width = (used / CUPO_MAXIMO * 100) + '%';
+            quota.querySelector('.quota-available').textContent = left
+                ? `${left} ${left === 1 ? 'cupo disponible' : 'cupos disponibles'}`
+                : 'Cupo completo';
+            quota.classList.toggle('is-full', left === 0);
+            quota.classList.toggle('is-low', left > 0 && left <= 5);
+
+            btn.disabled = left === 0;
+            btn.textContent = left ? 'Adjudicar' : 'Sin cupos';
+            if (!left) card.querySelector('.adj-form')?.remove();
+        }
+
+        function refreshAll() {
+            getCards().forEach(updateQuota);
+            updateStats();
+            updateAdminPanel();
+        }
+
+        function formatDate(d) {
+            const p = n => String(n).padStart(2, '0');
+            return `${p(d.getDate())}/${p(d.getMonth() + 1)}/${d.getFullYear()} ${p(d.getHours())}:${p(d.getMinutes())}`;
+        }
+
+        // Texto del archivo: agrupado por categoría, un adjudicado debajo del otro
+        function formatTxt(records) {
+            const groups = new Map();
+            records.forEach(r => {
+                if (!groups.has(r.category)) groups.set(r.category, []);
+                groups.get(r.category).push(r);
+            });
+            let out = 'ADJUDICACIONES - SANTA MARGARITA S.A.\nFeria de Artículos Mobiliarios San Juan Bautista\n';
+            groups.forEach((list, category) => {
+                out += `\n[${category}]\n`;
+                list.forEach(r => {
+                    out += `COD ${r.cod} | ${r.product} | CI ${r.ci} | ${r.nombre} | ${r.fecha}\n`;
+                });
+            });
+            return out;
+        }
+
+        let toastTimer;
+        function showToast(text) {
+            const toast = document.getElementById('toast');
+            toast.textContent = text;
+            toast.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        function openAdjForm(card) {
+            productGrid.querySelectorAll('.adj-form').forEach(f => { if (!card.contains(f)) f.remove(); });
+            let form = card.querySelector('.adj-form');
+            if (!form) {
+                form = document.createElement('form');
+                form.className = 'adj-form';
+                form.noValidate = true;
+                form.innerHTML = `
+                    <div class="adj-fields">
+                        <input name="ci" inputmode="numeric" autocomplete="off" maxlength="9" placeholder="CI (ej. 1234567)" aria-label="Número de documento">
+                        <input name="nombre" autocomplete="off" autocapitalize="characters" placeholder="NOMBRE APELLIDO" aria-label="Nombre y apellido">
+                    </div>
+                    <p class="adj-msg"></p>
+                    <div class="adj-actions">
+                        <button type="button" class="btn btn-secondary" data-adj-cancel>Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>`;
+                card.querySelector('.product-content').append(form);
+            }
+            form.elements.ci.focus();
+        }
+
+        // Clic en "Adjudicar", en "Cancelar" o sobre la imagen
+        productGrid.addEventListener('click', (e) => {
+            const card = e.target.closest('.product-card');
+            if (!card) return;
+            if (e.target.closest('.btn-buy')) openAdjForm(card);
+            else if (e.target.closest('[data-adj-cancel]')) e.target.closest('.adj-form').remove();
+            else if (e.target.closest('.img-zoom')) openLightbox(card);
+        });
+
+        // CI solo números; nombre solo letras en mayúscula
+        productGrid.addEventListener('input', (e) => {
+            const input = e.target;
+            let value = input.value;
+            if (input.name === 'ci') value = value.replace(/\D/g, '');
+            else if (input.name === 'nombre') value = value.toUpperCase().replace(/[^A-ZÁÉÍÓÚÜÑ ]/g, '').replace(/\s{2,}/g, ' ');
+            else return;
+            if (value !== input.value) input.value = value;
+        });
+
+        productGrid.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const card = form.closest('.product-card');
+            const msg = form.querySelector('.adj-msg');
+            const submitBtn = form.querySelector('[type="submit"]');
+            const info = cardInfo(card);
+            const ci = form.elements.ci.value.trim();
+            const nombre = form.elements.nombre.value.trim();
+
+            const fail = text => { msg.className = 'adj-msg error'; msg.textContent = text; };
+            if (!/^\d{5,9}$/.test(ci)) return fail('Ingrese un número de CI válido (solo números, ej. 1234567).');
+            if (!/^[A-ZÁÉÍÓÚÜÑ]+( [A-ZÁÉÍÓÚÜÑ]+)+$/.test(nombre)) return fail('Ingrese nombre y apellido.');
+            if (countFor(info.cod) >= CUPO_MAXIMO) { updateQuota(card); return; }
+            if (adjudicaciones.some(r => r.cod === info.cod && r.ci === ci)) return fail('Esta CI ya está adjudicada en este producto.');
+
+            const record = {
+                cod: info.cod,
+                product: info.name,
+                category: info.category,
+                ci,
+                nombre,
+                fecha: formatDate(new Date())
+            };
+
+            submitBtn.disabled = true;
+            msg.className = 'adj-msg';
+            msg.textContent = 'Guardando...';
+            try {
+                await registrarAdjudicacion(record);
+                form.remove();
+                showToast(`Adjudicado: ${nombre} (CI ${ci})`);
+            } catch (err) {
+                fail(err.message);
+                submitBtn.disabled = false;
+            }
+        });
+
+        async function registrarAdjudicacion(record) {
+            if (GOOGLE_FORM.url) await enviarFormulario(record);
+            adjudicaciones.push(record);
+            storageSet(localStorage, ADJ_KEY, JSON.stringify(adjudicaciones));
+            refreshAll();
+            await writeLinkedFile();
+        }
+
+        // Google Forms no devuelve respuesta legible (no-cors): solo se detectan fallas de conexión
+        async function enviarFormulario(record) {
+            const body = new URLSearchParams();
+            Object.entries(GOOGLE_FORM.entries).forEach(([key, entry]) => { if (entry) body.append(entry, record[key]); });
+            try {
+                await fetch(GOOGLE_FORM.url, { method: 'POST', mode: 'no-cors', body });
+            } catch (err) {
+                throw new Error('No se pudo enviar el formulario. Revise la conexión e intente de nuevo.');
+            }
+        }
+
+        /* ---------- Archivo local vinculado (File System Access API) ---------- */
+        const canLinkFile = 'showSaveFilePicker' in window;
+        let fileHandle = null;
+
+        function idb(mode, action) {
+            return new Promise((resolve, reject) => {
+                const req = indexedDB.open('sm_catalogo', 1);
+                req.onupgradeneeded = () => req.result.createObjectStore('kv');
+                req.onerror = () => reject(req.error);
+                req.onsuccess = () => {
+                    const tx = req.result.transaction('kv', mode);
+                    const op = action(tx.objectStore('kv'));
+                    tx.oncomplete = () => resolve(op.result);
+                    tx.onerror = () => reject(tx.error);
+                };
+            });
+        }
+
+        async function writeLinkedFile() {
+            if (!fileHandle) return false;
+            try {
+                const opts = { mode: 'readwrite' };
+                if (await fileHandle.queryPermission(opts) !== 'granted' &&
+                    await fileHandle.requestPermission(opts) !== 'granted') return false;
+                const writable = await fileHandle.createWritable();
+                await writable.write(formatTxt(adjudicaciones));
+                await writable.close();
+                return true;
+            } catch (err) {
+                return false;
+            }
+        }
+
+        document.getElementById('linkFileBtn').addEventListener('click', async () => {
+            try {
+                fileHandle = await window.showSaveFilePicker({
+                    suggestedName: TXT_NAME,
+                    types: [{ description: 'Archivo de texto', accept: { 'text/plain': ['.txt'] } }]
+                });
+            } catch (err) {
+                return; // el usuario canceló
+            }
+            try { await idb('readwrite', s => s.put(fileHandle, 'fileHandle')); } catch (err) { /* sin IndexedDB */ }
+            await writeLinkedFile();
+            updateAdminPanel();
+            showToast('Archivo vinculado: ' + fileHandle.name);
+        });
+
+        document.getElementById('downloadTxtBtn').addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(new Blob([formatTxt(adjudicaciones)], { type: 'text/plain;charset=utf-8' }));
+            link.download = TXT_NAME;
+            link.click();
+            setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+        });
+
+        document.getElementById('clearAdjBtn').addEventListener('click', async () => {
+            if (!confirm('¿Borrar todas las adjudicaciones guardadas en este navegador?')) return;
+            adjudicaciones = [];
+            storageSet(localStorage, ADJ_KEY, '[]');
+            refreshAll();
+            await writeLinkedFile();
+        });
+
+        function updateAdminPanel() {
+            const full = getCards().length && [...getCards()].filter(c => countFor(cardInfo(c).cod) >= CUPO_MAXIMO).length;
+            document.getElementById('adjSummary').innerHTML =
+                `<strong>${adjudicaciones.length}</strong> adjudicaciones registradas · <strong>${full || 0}</strong> producto(s) con cupo completo.`;
+
+            const localStatus = document.getElementById('localStatus');
+            localStatus.textContent = !canLinkFile ? 'No disponible en este navegador' : fileHandle ? 'Vinculado: ' + fileHandle.name : 'Sin vincular';
+            localStatus.classList.toggle('on', !!fileHandle);
+            document.getElementById('linkFileBtn').disabled = !canLinkFile;
+            document.getElementById('linkFileBtn').textContent = fileHandle ? 'Cambiar archivo' : 'Vincular archivo';
+        }
+
+        /* ---------- Visor de imagen (clic / toque) y zoom con el cursor ---------- */
+        const lightbox = document.getElementById('lightbox');
+
+        function openLightbox(card) {
+            document.getElementById('lightboxImg').src = card.querySelector('.product-image').src;
+            document.getElementById('lightboxCaption').textContent = card.dataset.name;
+            lightbox.showModal();
+        }
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target.closest('.lightbox-close')) lightbox.close();
+        });
+
+        if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            productGrid.addEventListener('mousemove', (e) => {
+                const wrap = e.target.closest('.img-zoom');
+                if (!wrap) return;
+                const r = wrap.getBoundingClientRect();
+                wrap.querySelector('.product-image').style.transformOrigin =
+                    `${(e.clientX - r.left) / r.width * 100}% ${(e.clientY - r.top) / r.height * 100}%`;
+            });
+        }
+
+        getCards().forEach(enhanceCard);
+
+        // Productos cargados previamente en este navegador
+        loadSavedProducts().forEach(p => { if (!cardExists(p)) insertCard(p); });
+
+        /* ---------- Diálogos ---------- */
+        const loginDialog = document.getElementById('loginDialog');
+        const productDialog = document.getElementById('productDialog');
+        const productForm = document.getElementById('productForm');
+        const productResult = document.getElementById('productResult');
+        const passwordInput = document.getElementById('adminPassword');
+        const loginError = document.getElementById('loginError');
+        const pImage = document.getElementById('pImage');
+        const pPreview = document.getElementById('pPreview');
+        const pCategory = document.getElementById('pCategory');
+        const pDetail = document.getElementById('pDetail');
+        const pPrice = document.getElementById('pPrice');
+
+        // Precio solo números, con punto separador de miles
+        pPrice.addEventListener('input', () => {
+            const digits = pPrice.value.replace(/\D/g, '').replace(/^0+(?=\d)/, '');
+            pPrice.value = digits.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        });
+
+        // Las categorías del formulario salen de los botones de filtro
+        filterButtons.forEach(btn => {
+            if (btn.dataset.filter === 'all') return;
+            pCategory.add(new Option(btn.textContent.trim(), btn.dataset.filter));
+        });
+
+        pCategory.addEventListener('change', () => {
+            pDetail.placeholder = pCategory.value === 'equipos' ? 'Capacidad: 300 litros' : 'Medidas: 80 x 40 x 180 cm';
+        });
+
+        document.querySelectorAll('[data-close]').forEach(btn =>
+            btn.addEventListener('click', () => btn.closest('dialog').close()));
+
+        document.getElementById('adminTab').addEventListener('click', () => {
+            if (storageGet(sessionStorage, SESSION_KEY) === '1') {
+                openProductDialog();
+            } else {
+                passwordInput.value = '';
+                loginError.textContent = '';
+                loginDialog.showModal();
+            }
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (passwordInput.value === ADMIN_PASSWORD) {
+                storageSet(sessionStorage, SESSION_KEY, '1');
+                loginDialog.close();
+                openProductDialog();
+            } else {
+                loginError.textContent = 'Contraseña incorrecta.';
+                passwordInput.select();
+            }
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            try { sessionStorage.removeItem(SESSION_KEY); } catch (e) { /* sin almacenamiento */ }
+            productDialog.close();
+        });
+
+        function updateAdminSummary() {
+            const count = loadSavedProducts().length;
+            document.getElementById('adminSummary').textContent = count
+                ? `${count} producto(s) agregados desde este navegador y aún no guardados en index.html.`
+                : '';
+        }
+
+        function openProductDialog() {
+            productForm.reset();
+            pPreview.hidden = true;
+            pPreview.removeAttribute('src');
+            document.getElementById('pCod').value = nextCode();
+            productForm.hidden = false;
+            productResult.hidden = true;
+            updateAdminSummary();
+            if (!productDialog.open) {
+                showAdminPanel('panelProduct');
+                productDialog.showModal();
+            }
+        }
+
+        function showAdminPanel(id) {
+            document.querySelectorAll('.admin-tab').forEach(tab => {
+                tab.classList.toggle('active', tab.dataset.panel === id);
+                document.getElementById(tab.dataset.panel).hidden = tab.dataset.panel !== id;
+            });
+            if (id === 'panelAdj') updateAdminPanel();
+            if (id === 'panelList') renderProductList();
+        }
+
+        document.querySelectorAll('.admin-tab').forEach(tab =>
+            tab.addEventListener('click', () => showAdminPanel(tab.dataset.panel)));
+
+        /* ---------- Eliminar productos ---------- */
+        function renderProductList() {
+            document.getElementById('productList').innerHTML = [...getCards()].map((card, i) =>
+                `<li><span><strong>COD ${escapeHtml(cardInfo(card).cod)}</strong> · ${escapeHtml(card.dataset.name)}</span>` +
+                `<button type="button" class="btn btn-danger-link" data-delete="${i}">Eliminar</button></li>`).join('');
+        }
+
+        document.getElementById('productList').addEventListener('click', async (e) => {
+            const btn = e.target.closest('[data-delete]');
+            if (!btn) return;
+            const card = getCards()[btn.dataset.delete];
+            const info = cardInfo(card);
+            const adj = countFor(info.cod);
+            if (!confirm(`¿Eliminar "${card.dataset.name}" (COD ${info.cod})?` +
+                (adj ? `\nTambién se borran sus ${adj} adjudicación(es).` : ''))) return;
+
+            // Quita también el comentario <!-- Producto N --> que precede al bloque
+            let prev = card.previousSibling;
+            while (prev && prev.nodeType === Node.TEXT_NODE && !prev.textContent.trim()) prev = prev.previousSibling;
+            if (prev && prev.nodeType === Node.COMMENT_NODE) prev.remove();
+            card.remove();
+
+            saveProducts(loadSavedProducts().filter(p => normalizeCod(p.cod) !== info.cod));
+            adjudicaciones = adjudicaciones.filter(r => r.cod !== info.cod);
+            storageSet(localStorage, ADJ_KEY, JSON.stringify(adjudicaciones));
+            refreshAll();
+            filterProducts();
+            renderProductList();
+            await writeLinkedFile();
+
+            if (!canLinkFile) return showToast('Producto eliminado. Descargue index.html para dejarlo fijo.');
+            const ok = await saveToIndex();
+            showToast(ok ? 'Producto eliminado y guardado en ' + htmlHandle.name
+                : 'Producto eliminado de la página, pero no se guardó en index.html.');
+        });
+
+        pImage.addEventListener('change', () => {
+            const file = pImage.files[0];
+            if (!file) { pPreview.hidden = true; return; }
+            pPreview.src = URL.createObjectURL(file);
+            pPreview.hidden = false;
+        });
+
+        productForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const product = {
+                image: pImage.files[0].name,
+                name: document.getElementById('pName').value.trim(),
+                category: pCategory.value,
+                estado: document.getElementById('pEstado').value,
+                cod: document.getElementById('pCod').value.trim(),
+                price: pPrice.value.replace(/\D/g, ''),
+                detail: pDetail.value.trim()
+            };
+
+            insertCard(product);
+            const saved = loadSavedProducts();
+            saved.push(product);
+            saveProducts(saved);
+
+            updateStats();
+            filterProducts();
+
+            document.getElementById('generatedCode').textContent = buildCardHtml(product);
+            productForm.hidden = true;
+            productResult.hidden = false;
+            if (canLinkFile) setResultMsg(await saveToIndex());
+        });
+
+        /* ---------- Guardar en el mismo index.html (Chrome o Edge de escritorio) ---------- */
+        let htmlHandle = null;
+        document.getElementById('saveHtmlBtn').hidden = !canLinkFile;
+        document.getElementById('downloadBtn').hidden = canLinkFile;
+
+        // Con acceso a archivos no se muestra el bloque de código: el producto se guarda directo
+        if (canLinkFile) {
+            document.getElementById('generatedCode').hidden = true;
+            document.getElementById('copyBtn').hidden = true;
+        }
+
+        // ok: true = guardado, false = falló, null = no se eligió el archivo
+        function setResultMsg(ok) {
+            const name = htmlHandle ? escapeHtml(htmlHandle.name) : 'index.html';
+            document.getElementById('resultMsg').innerHTML =
+                ok ? `Producto agregado y guardado en <strong>${name}</strong>.`
+                : ok === false ? `Producto agregado, pero no se pudo guardar en <strong>${name}</strong>. Toque "Guardar en index.html" para reintentar.`
+                : 'Producto agregado, pero todavía no se guardó. Toque "Guardar en index.html" y elija el archivo <strong>index.html</strong> del proyecto (solo se pide una vez).';
+            document.getElementById('saveHtmlBtn').hidden = !!ok;
+        }
+
+        async function saveToIndex() {
+            if (!htmlHandle) {
+                let handle;
+                try {
+                    [handle] = await window.showOpenFilePicker({
+                        types: [{ description: 'Página HTML', accept: { 'text/html': ['.html'] } }]
+                    });
+                } catch (err) {
+                    return null; // el usuario canceló
+                }
+                if (handle.name !== 'index.html' && !confirm(`El archivo elegido es "${handle.name}". ¿Reemplazar su contenido con el catálogo?`)) return null;
+                htmlHandle = handle;
+                try { await idb('readwrite', s => s.put(htmlHandle, 'htmlHandle')); } catch (err) { /* sin IndexedDB */ }
+            }
+            try {
+                const opts = { mode: 'readwrite' };
+                if (await htmlHandle.queryPermission(opts) !== 'granted' &&
+                    await htmlHandle.requestPermission(opts) !== 'granted') return false;
+                const writable = await htmlHandle.createWritable();
+                await writable.write(buildPageHtml());
+                await writable.close();
+                saveProducts([]); // ya quedaron en index.html; así, si se borran del archivo, no reaparecen
+                return true;
+            } catch (err) {
+                return false;
+            }
+        }
+
+        document.getElementById('saveHtmlBtn').addEventListener('click', async () => {
+            const ok = await saveToIndex();
+            setResultMsg(ok);
+            if (ok) showToast('Guardado en ' + htmlHandle.name);
+        });
+
+        document.getElementById('addAnotherBtn').addEventListener('click', openProductDialog);
+
+        document.getElementById('copyBtn').addEventListener('click', async (e) => {
+            const text = document.getElementById('generatedCode').textContent;
+            const btn = e.currentTarget;
+            try {
+                await navigator.clipboard.writeText(text);
+            } catch (err) {
+                const area = document.createElement('textarea');
+                area.value = text;
+                document.body.appendChild(area);
+                area.select();
+                document.execCommand('copy');
+                area.remove();
+            }
+            const original = btn.innerHTML;
+            btn.textContent = '¡Copiado!';
+            setTimeout(() => { btn.innerHTML = original; }, 1500);
+        });
+
+        // Copia de index.html con los productos nuevos ya incluidos
+        function buildPageHtml() {
+            const clone = document.documentElement.cloneNode(true);
+            clone.querySelectorAll('dialog').forEach(d => d.removeAttribute('open'));
+            clone.querySelectorAll('.product-card').forEach(c => c.style.display = 'flex');
+            clone.querySelector('#noResults').style.display = 'none';
+            clone.querySelectorAll('.filter-btn').forEach(b =>
+                b.classList.toggle('active', b.dataset.filter === 'all'));
+
+            // Quita lo que el script agrega al cargar (cupos, zoom, formularios)
+            clone.querySelectorAll('.quota, .adj-form, .zoom-hint').forEach(el => el.remove());
+            clone.querySelectorAll('.img-zoom').forEach(wrap => wrap.replaceWith(...wrap.childNodes));
+            clone.querySelectorAll('.product-image').forEach(img => img.removeAttribute('style'));
+            clone.querySelectorAll('.btn-buy').forEach(btn => { btn.disabled = false; btn.textContent = 'Adjudicar'; });
+            clone.querySelector('#lightboxImg').removeAttribute('src');
+            clone.querySelector('#toast').className = 'toast';
+
+            // Deja el diálogo de producto como al abrir la página
+            clone.querySelector('#productForm').hidden = false;
+            clone.querySelector('#productResult').hidden = true;
+            clone.querySelector('#generatedCode').textContent = '';
+            clone.querySelector('#productList').textContent = '';
+            ['#generatedCode', '#copyBtn', '#saveHtmlBtn', '#downloadBtn'].forEach(sel => clone.querySelector(sel).hidden = false);
+            clone.querySelector('#pPreview').hidden = true;
+            clone.querySelector('#pPreview').removeAttribute('src');
+
+            return '<!DOCTYPE html>\n' + clone.outerHTML;
+        }
+
+        // Navegadores sin acceso a archivos: descarga una copia
+        document.getElementById('downloadBtn').addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(new Blob([buildPageHtml()], { type: 'text/html' }));
+            link.download = 'index.html';
+            link.click();
+            setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+        });
+
+        refreshAll();
+        filterProducts();
+        if (canLinkFile) {
+            idb('readonly', s => s.get('fileHandle'))
+                .then(handle => { if (handle) { fileHandle = handle; updateAdminPanel(); } })
+                .catch(() => { /* sin IndexedDB */ });
+            idb('readonly', s => s.get('htmlHandle'))
+                .then(handle => { if (handle) htmlHandle = handle; })
+                .catch(() => { /* sin IndexedDB */ });
+        }
     </script>
+
+
 
 </body></html>
