@@ -314,6 +314,8 @@
         .product-card[data-category="Armario"]::before { content: "Armario / Estante"; }
         .product-card[data-category="escritorios"]::before { content: "Escritorio / Mesa"; }
         .product-card[data-category="equipos"]::before { content: "Equipo"; }
+        .product-card[data-category="Sillas"]::before { content: "Sillas"; }
+        .product-card[data-category="Otros"]::before { content: "Otros"; }
 
         .product-image {
             width: 100%;
@@ -1035,7 +1037,9 @@
                 <div class="stat"><div class="stat-value" id="statArmario">27</div><div class="stat-label">Armarios / Gavetas / Estantes</div></div>
                 <div class="stat"><div class="stat-value" id="statEscritorios">13</div><div class="stat-label">Escritorios / Mesas</div></div>
                 <div class="stat"><div class="stat-value" id="statEquipos">2</div><div class="stat-label">Equipos / Electrodomésticos</div></div>
-                <div class="stat"><div class="stat-value" id="statAdj">3</div><div class="stat-label">Adjudicaciones registradas</div></div>
+                <div class="stat"><div class="stat-value" id="statSillas">0</div><div class="stat-label">Sillas</div></div>
+                <div class="stat"><div class="stat-value" id="statOtros">0</div><div class="stat-label">Otros</div></div>
+                <div class="stat"><div class="stat-value" id="statAdj">0</div><div class="stat-label">Adjudicaciones registradas</div></div>
             </div>
         </div>
     </section>
@@ -1052,6 +1056,8 @@
                 <button class="filter-btn" data-filter="Armario">Armario/Gaveta/Estantes</button>
                 <button class="filter-btn" data-filter="escritorios">Escritorios/Mesas</button>
                 <button class="filter-btn" data-filter="equipos">Equipos/Electrodomesticos</button>
+                <button class="filter-btn" data-filter="Sillas">Sillas</button>
+                <button class="filter-btn" data-filter="Otros">Otros</button>
             </div>
         </div>
 
@@ -1070,7 +1076,7 @@
                         <span class="product-price">Gs. 110.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1086,7 +1092,7 @@
                         <span class="product-price">Gs. 125.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1102,7 +1108,7 @@
                         <span class="product-price">Gs. 125.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1118,7 +1124,7 @@
                         <span class="product-price">Gs. 125.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1134,7 +1140,7 @@
                         <span class="product-price">Gs. 100.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1150,7 +1156,7 @@
                         <span class="product-price">Gs. 150.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1166,7 +1172,7 @@
                         <span class="product-price">Gs. 150.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1182,7 +1188,7 @@
                         <span class="product-price">Gs. 160.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1198,7 +1204,7 @@
                         <span class="product-price">Gs. 145.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1214,7 +1220,7 @@
                         <span class="product-price">Gs. 145.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1230,7 +1236,7 @@
                         <span class="product-price">Gs. 155.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1246,7 +1252,7 @@
                         <span class="product-price">Gs. 125.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1262,7 +1268,7 @@
                         <span class="product-price">Gs. 140.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1278,7 +1284,7 @@
                         <span class="product-price">Gs. 150.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1294,7 +1300,7 @@
                         <span class="product-price">Gs. 145.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1310,7 +1316,7 @@
                         <span class="product-price">Gs. 120.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1326,7 +1332,7 @@
                         <span class="product-price">Gs. 170.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1342,7 +1348,7 @@
                         <span class="product-price">Gs. 140.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1358,7 +1364,7 @@
                         <span class="product-price">Gs. 140.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1374,7 +1380,7 @@
                         <span class="product-price">Gs. 135.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1390,7 +1396,7 @@
                         <span class="product-price">Gs. 155.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1406,7 +1412,7 @@
                         <span class="product-price">Gs. 125.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1422,7 +1428,7 @@
                         <span class="product-price">Gs. 170.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1438,7 +1444,7 @@
                         <span class="product-price">Gs. 120.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1454,7 +1460,7 @@
                         <span class="product-price">Gs. 135.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1470,7 +1476,7 @@
                         <span class="product-price">Gs. 135.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1486,7 +1492,7 @@
                         <span class="product-price">Gs. 145.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1502,7 +1508,7 @@
                         <span class="product-price">Gs. 125.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1518,7 +1524,7 @@
                         <span class="product-price">Gs. 165.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1534,7 +1540,7 @@
                         <span class="product-price">Gs. 135.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1550,7 +1556,7 @@
                         <span class="product-price">Gs. 130.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1566,7 +1572,7 @@
                         <span class="product-price">Gs. 125.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1582,7 +1588,7 @@
                         <span class="product-price">Gs. 210.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1598,7 +1604,7 @@
                         <span class="product-price">Gs. 125.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1614,7 +1620,7 @@
                         <span class="product-price">Gs. 130.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1630,7 +1636,7 @@
                         <span class="product-price">Gs. 135.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1646,7 +1652,7 @@
                         <span class="product-price">Gs. 135.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1662,7 +1668,7 @@
                         <span class="product-price">Gs. 125.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1678,7 +1684,7 @@
                         <span class="product-price">Gs. 135.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1694,7 +1700,7 @@
                         <span class="product-price">Gs. 200.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1710,7 +1716,7 @@
                         <span class="product-price">Gs. 1.000.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1726,7 +1732,7 @@
                         <span class="product-price">Gs. 850.000</span>
                     
                     
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>
@@ -1964,6 +1970,8 @@
             document.getElementById('statArmario').textContent = count('Armario');
             document.getElementById('statEscritorios').textContent = count('escritorios');
             document.getElementById('statEquipos').textContent = count('equipos');
+            document.getElementById('statSillas').textContent = count('Sillas');
+            document.getElementById('statOtros').textContent = count('Otros');
             document.getElementById('statAdj').textContent = totalAdjudicadas();
         }
 
@@ -2025,7 +2033,7 @@
                     </p><p class="product-description">${escapeHtml(p.detail || 'Medidas________')}</p>
                     <div class="product-footer">
                         <span class="product-price">${formatPrice(p.price)}</span>
-                        <button class="btn-buy" type="button">Adjudicar</button>
+                        
                     </div>
                 </div>
             </div>`;
@@ -2092,10 +2100,6 @@
             const price = card.querySelector('.product-price');
             if (price && !card.querySelector('.quota')) {
                 price.insertAdjacentHTML('afterend', `
-                    <div class="quota">
-                        <div class="quota-row"><span>Cupos adjudicados</span><strong class="quota-count"></strong></div>
-                        <div class="quota-bar"><div class="quota-fill"></div></div>
-                        <span class="quota-available"></span>
                     </div>`);
             }
         }
