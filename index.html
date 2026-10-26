@@ -1242,7 +1242,7 @@
             <div class="dialog-body">
                 <div class="panel-section">
                     <h3>Productos <button type="button" class="btn btn-primary" id="newProductBtn"><svg class="icon"><use href="#i-plus"></use></svg>Nuevo producto</button></h3>
-                    <p>El botón verde/rojo de cada producto muestra u oculta su botón <strong>Adjudicar</strong>.</p>
+                    <p>El botón verde/rojo de cada producto muestra u oculta su botón <strong>Adjudicar</strong> y la información de cupos.</p>
                     <div class="panel-actions" style="margin-bottom: 0.75rem;">
                         <button type="button" class="btn btn-secondary" data-bulk="true">Mostrar Adjudicar en todos</button>
                         <button type="button" class="btn btn-secondary" data-bulk="false">Ocultar Adjudicar en todos</button>
@@ -1302,7 +1302,7 @@
                         <input type="text" id="pDetail" placeholder="Medidas: 80 x 40 x 180 cm">
                     </div>
                     <div class="form-field full">
-                        <label class="check-row"><input type="checkbox" id="pAdjudicable" checked>Mostrar el botón Adjudicar en este producto</label>
+                        <label class="check-row"><input type="checkbox" id="pAdjudicable" checked>Mostrar el botón Adjudicar y los cupos en este producto</label>
                     </div>
                 </div>
                 <p class="error-msg" id="productError"></p>
@@ -1356,7 +1356,7 @@
             <div class="dialog-body">
                 <div class="panel-section">
                     <h3>Adjudicaciones</h3>
-                    <label class="check-row" style="margin-bottom: 0.5rem;"><input type="checkbox" id="cfgAbierta">Adjudicaciones abiertas (mostrar el botón Adjudicar)</label>
+                    <label class="check-row" style="margin-bottom: 0.5rem;"><input type="checkbox" id="cfgAbierta">Adjudicaciones abiertas (mostrar el botón Adjudicar y los cupos)</label>
                     <p>Si se desmarca, el botón Adjudicar desaparece de todos los productos y la base rechaza nuevas adjudicaciones.</p>
                 </div>
                 <div class="panel-section">
@@ -1653,9 +1653,10 @@
             quota.classList.toggle('is-full', left === 0);
             quota.classList.toggle('is-low', left > 0 && left <= 5);
 
-            // El botón se oculta si las adjudicaciones están cerradas o el producto no es adjudicable
+            // Botón y cupos se ocultan si las adjudicaciones están cerradas o el producto no es adjudicable
             const canAdjudicate = config.adjudicacion_abierta && p.adjudicable;
             btn.hidden = !canAdjudicate;
+            quota.hidden = !canAdjudicate;
             btn.disabled = left === 0;
             btn.textContent = left ? 'Adjudicar' : 'Sin cupos';
             if (!left || !canAdjudicate) card.querySelector('.adj-form')?.remove();
