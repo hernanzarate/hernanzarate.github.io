@@ -1170,7 +1170,7 @@
         <div class="hero-inner">
             <span class="hero-eyebrow">Catálogo de mobiliario</span>
             <h1>Feria de Artículos Mobiliarios</h1>
-            <p>San Juan Bautista</p>
+            <p id="heroSede">&nbsp;</p>
             <!-- Se completa con las categorías y productos de la base -->
             <div class="stats" id="stats"></div>
         </div>
@@ -1194,7 +1194,7 @@
     </div>
 
     <footer class="site-footer">
-        © Santa Margarita S.A. · Feria de Artículos Mobiliarios San Juan Bautista
+        © Santa Margarita S.A. · Feria de Artículos Mobiliarios <span id="footerSede"></span>
     </footer>
 
     <!-- Diálogo de acceso -->
@@ -1277,6 +1277,10 @@
                         <input type="text" id="pName" placeholder="Ej.: Armario alto de melamina con 2 puertas">
                     </div>
                     <div class="form-field">
+                        <label for="pSede">Sede</label>
+                        <select id="pSede"></select>
+                    </div>
+                    <div class="form-field">
                         <label for="pCategory">Categoría</label>
                         <select id="pCategory"></select>
                     </div>
@@ -1355,9 +1359,14 @@
         <form id="panelConfig" class="admin-panel" novalidate hidden>
             <div class="dialog-body">
                 <div class="panel-section">
+                    <h3>Sede de esta página</h3>
+                    <div id="cfgSedes" style="display: grid; gap: 0.5rem; margin-bottom: 0.5rem;"></div>
+                    <p>Esta página solo muestra los productos de la sede elegida, y el título cambia al nombre de la sede. Se guarda para esta dirección: <strong id="cfgSiteUrl" style="overflow-wrap: anywhere;"></strong></p>
+                </div>
+                <div class="panel-section">
                     <h3>Adjudicaciones</h3>
                     <label class="check-row" style="margin-bottom: 0.5rem;"><input type="checkbox" id="cfgAbierta">Adjudicaciones abiertas (mostrar el botón Adjudicar y los cupos)</label>
-                    <p>Si se desmarca, el botón Adjudicar desaparece de todos los productos y la base rechaza nuevas adjudicaciones.</p>
+                    <p>Si se desmarca, el botón Adjudicar desaparece de todos los productos y la base rechaza nuevas adjudicaciones. Vale para todas las sedes.</p>
                 </div>
                 <div class="panel-section">
                     <h3>Cupo por producto</h3>
@@ -1414,6 +1423,8 @@
         const db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         const SYNC_SEGUNDOS = 30;
+        // Cada página publicada (cada repositorio) elige su sede en Administración; se guarda por dirección
+        const SITE_URL = location.href.split(/[?#]/)[0].replace(/[^/]*$/, '');
         const TXT_NAME = 'adjudicaciones.txt';
         const CSV_NAME = 'adjudicaciones.csv';
 
@@ -1426,7 +1437,10 @@
         /* ---------- Datos (se cargan de la base) ---------- */
         let config = { cupo_maximo: 20, adjudicacion_abierta: true };
         let categorias = [];     // { id, nombre }
-        let productos = [];      // filas de la tabla productos
+        let sedes = [];          // { id, nombre }
+        let sedeActual = null;   // sede de esta página (null = Todos)
+        let todosProductos = []; // filas de la tabla productos, de todas las sedes
+        let productos = [];      // productos de la sede de esta página
         let cupos = {};          // cupos usados por COD (visible para todos)
         let adjudicaciones = []; // registros completos (solo con sesión de administrador)
         let adminUser = null;
@@ -1441,7 +1455,11 @@
         const productByCod = cod => productos.find(p => p.cod === cod);
         const categoryName = id => categorias.find(c => c.id === id)?.nombre || 'Sin categoría';
         const countFor = cod => cupos[cod] || 0;
-        const totalAdjudicadas = () => Object.values(cupos).reduce((sum, n) => sum + n, 0);
+        const sedeName = id => sedes.find(s => s.id === id)?.nombre || 'Sin sede';
+        const sedeLabel = () => sedeActual === null ? sedes.map(s => s.nombre).join(' · ') : sedeName(sedeActual);
+        const totalAdjudicadas = () => sedeActual === null
+            ? Object.values(cupos).reduce((sum, n) => sum + n, 0)
+            : productos.reduce((sum, p) => sum + countFor(p.cod), 0);
         const getCards = () => productGrid.querySelectorAll('.product-card');
 
         function escapeHtml(text) {
@@ -1514,26 +1532,32 @@
         /* ---------- Sincronización con la base ---------- */
         async function syncShared() {
             try {
-                const [cfg, cats, prods, cup] = await Promise.all([
+                const [cfg, cats, prods, cup, sds, sitio] = await Promise.all([
                     db.from('configuracion').select('cupo_maximo, adjudicacion_abierta').eq('id', 1).single(),
                     db.from('categorias').select('id, nombre').order('id'),
-                    db.from('productos').select('cod, nombre, categoria_id, estado, precio, detalle, imagen, adjudicable'),
-                    db.rpc('cupos')
+                    db.from('productos').select('cod, nombre, categoria_id, sede_id, estado, precio, detalle, imagen, adjudicable'),
+                    db.rpc('cupos'),
+                    db.from('sedes').select('id, nombre').order('id'),
+                    db.from('sitios').select('sede_id').eq('url', SITE_URL).maybeSingle()
                 ]);
-                for (const res of [cfg, cats, prods, cup]) if (res.error) throw res.error;
+                for (const res of [cfg, cats, prods, cup, sds, sitio]) if (res.error) throw res.error;
 
                 config = cfg.data;
                 categorias = cats.data;
-                productos = prods.data.sort(byCod);
+                sedes = sds.data;
+                sedeActual = sitio.data?.sede_id ?? null; // sin elegir = Todos
+                todosProductos = prods.data.sort(byCod);
+                productos = sedeActual === null ? todosProductos : todosProductos.filter(p => p.sede_id === sedeActual);
                 cupos = Object.fromEntries(cup.data.map(r => [r.cod, r.usados]));
                 if (adminUser) adjudicaciones = await loadAdjudicaciones();
                 loaded = true;
                 syncError = '';
 
                 // El catálogo se vuelve a dibujar solo si cambió (así no se cierra un formulario abierto)
-                const signature = JSON.stringify([config, categorias, productos]);
+                const signature = JSON.stringify([config, categorias, productos, sedes, sedeActual]);
                 if (signature !== catalogSignature) {
                     catalogSignature = signature;
+                    renderSede();
                     renderFilters();
                     renderGrid();
                 }
@@ -1556,7 +1580,14 @@
             updateAdminPanel();
         }
 
-        /* ---------- Indicadores, filtros y catálogo ---------- */
+        /* ---------- Sede, indicadores, filtros y catálogo ---------- */
+        // El título dice la sede elegida para esta página; con "Todos", todas las sedes
+        function renderSede() {
+            const label = sedeLabel();
+            $('heroSede').textContent = label;
+            $('footerSede').textContent = label;
+        }
+
         function renderStats() {
             const count = id => productos.filter(p => p.categoria_id === id).length;
             const tiles = [
@@ -1863,7 +1894,7 @@
             $('productList').innerHTML = rows.length
                 ? rows.map(p =>
                     `<li><span><strong>COD ${escapeHtml(p.cod)}</strong> · ${escapeHtml(p.nombre)}<br>` +
-                    `<small>${escapeHtml(categoryName(p.categoria_id))} · ${formatPrice(p.precio)} · ${countFor(p.cod)}/${config.cupo_maximo} adjudicados</small></span>` +
+                    `<small>${sedeActual === null ? escapeHtml(sedeName(p.sede_id)) + ' · ' : ''}${escapeHtml(categoryName(p.categoria_id))} · ${formatPrice(p.precio)} · ${countFor(p.cod)}/${config.cupo_maximo} adjudicados</small></span>` +
                     `<span class="row-actions">` +
                     `<button type="button" class="status-pill ${p.adjudicable ? 'on' : 'off'}" data-toggle="${escapeHtml(p.cod)}" title="Mostrar u ocultar el botón Adjudicar">${p.adjudicable ? 'Adjudicar visible' : 'Adjudicar oculto'}</button>` +
                     `<button type="button" class="btn btn-secondary" data-edit="${escapeHtml(p.cod)}">Editar</button>` +
@@ -1887,7 +1918,9 @@
                 danger: !visible
             })) return;
             btn.disabled = true;
-            const res = await db.from('productos').update({ adjudicable: visible }).neq('adjudicable', visible).select('cod');
+            // Solo los productos de la sede de esta página
+            const cods = productos.filter(p => p.adjudicable !== visible).map(p => p.cod);
+            const res = await db.from('productos').update({ adjudicable: visible }).in('cod', cods).select('cod');
             btn.disabled = false;
             const err = checkWrite(res);
             if (err) return showToast('No se pudo cambiar: ' + err.message);
@@ -1929,7 +1962,8 @@
         });
 
         function nextCode() {
-            const max = productos.reduce((m, p) => Math.max(m, parseInt(p.cod, 10) || 0), 0);
+            // El COD es único entre todas las sedes
+            const max = todosProductos.reduce((m, p) => Math.max(m, parseInt(p.cod, 10) || 0), 0);
             return String(max + 1).padStart(3, '0');
         }
 
@@ -1947,6 +1981,8 @@
             }
             editingCod = p ? p.cod : null;
             pCategory.innerHTML = categorias.map(c => `<option value="${c.id}">${escapeHtml(c.nombre)}</option>`).join('');
+            $('pSede').innerHTML = sedes.map(s => `<option value="${s.id}">${escapeHtml(s.nombre)}</option>`).join('');
+            $('pSede').value = p ? p.sede_id : (sedeActual ?? sedes[0]?.id);
             pCod.value = p ? p.cod : nextCode();
             pCod.readOnly = !!p; // el COD identifica las adjudicaciones: no se cambia al editar
             $('pName').value = p ? p.nombre : '';
@@ -1991,6 +2027,7 @@
             const row = {
                 nombre: $('pName').value.trim(),
                 categoria_id: Number(pCategory.value),
+                sede_id: Number($('pSede').value),
                 estado: $('pEstado').value,
                 precio: Number(pPrice.value.replace(/\D/g, '')),
                 detalle: $('pDetail').value.trim(),
@@ -2091,8 +2128,13 @@
             showToast('Categoría eliminada.');
         });
 
-        /* ---------- Configuración: cupo y botón Adjudicar ---------- */
+        /* ---------- Configuración: sede, cupo y botón Adjudicar ---------- */
         function fillConfigForm() {
+            const options = [...sedes.map(s => ({ value: String(s.id), nombre: s.nombre })), { value: 'todos', nombre: 'Todos' }];
+            const current = sedeActual === null ? 'todos' : String(sedeActual);
+            $('cfgSedes').innerHTML = options.map(o =>
+                `<label class="check-row"><input type="radio" name="cfgSede" value="${o.value}"${o.value === current ? ' checked' : ''}>${escapeHtml(o.nombre)}</label>`).join('');
+            $('cfgSiteUrl').textContent = SITE_URL;
             $('cfgCupo').value = config.cupo_maximo;
             $('cfgAbierta').checked = config.adjudicacion_abierta;
             $('configError').textContent = '';
@@ -2102,10 +2144,16 @@
             e.preventDefault();
             const cupo = Number($('cfgCupo').value);
             if (!Number.isInteger(cupo) || cupo < 1 || cupo > 10000) return $('configError').textContent = 'El cupo tiene que ser un número entre 1 y 10000.';
-            const res = await db.from('configuracion')
-                .update({ cupo_maximo: cupo, adjudicacion_abierta: $('cfgAbierta').checked })
-                .eq('id', 1).select('id');
-            const err = checkWrite(res);
+            const sede = $('panelConfig').elements.cfgSede.value;
+            const [resCfg, resSitio] = await Promise.all([
+                db.from('configuracion')
+                    .update({ cupo_maximo: cupo, adjudicacion_abierta: $('cfgAbierta').checked })
+                    .eq('id', 1).select('id'),
+                db.from('sitios')
+                    .upsert({ url: SITE_URL, sede_id: sede === 'todos' ? null : Number(sede), updated_at: new Date().toISOString() })
+                    .select('url')
+            ]);
+            const err = checkWrite(resCfg) || checkWrite(resSitio);
             if (err) return $('configError').textContent = 'No se pudo guardar: ' + err.message;
             await syncShared();
             fillConfigForm();
@@ -2126,8 +2174,9 @@
                 rows.push(...data);
                 if (data.length < PAGE) break;
             }
-            // Nombre y categoría actuales del producto; si ya no existe, los guardados al adjudicar
-            return rows.map(r => {
+            // Solo las de la sede de esta página. Nombre y categoría actuales del producto;
+            // si el producto ya no existe (solo visible con "Todos"), los guardados al adjudicar
+            return rows.filter(r => sedeActual === null || productByCod(r.cod)).map(r => {
                 const p = productByCod(r.cod);
                 return {
                     id: r.id,
@@ -2148,7 +2197,7 @@
                 if (!groups.has(r.category)) groups.set(r.category, []);
                 groups.get(r.category).push(r);
             });
-            let out = 'ADJUDICACIONES - SANTA MARGARITA S.A.\nFeria de Artículos Mobiliarios San Juan Bautista\n';
+            let out = `ADJUDICACIONES - SANTA MARGARITA S.A.\nFeria de Artículos Mobiliarios ${sedeLabel()}\n`;
             groups.forEach((list, category) => {
                 out += `\n[${category}]\n`;
                 list.forEach(r => {
